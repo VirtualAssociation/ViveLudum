@@ -307,15 +307,15 @@ Transform:
   m_LocalPosition: {x: 0.016297176, y: 0.020077035, z: -0.7036818}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1712594717}
+  - {fileID: 1035617783}
   - {fileID: 596862458}
   - {fileID: 1091323018}
+  - {fileID: 1712594717}
   - {fileID: 703017293}
   - {fileID: 1491166315}
   - {fileID: 1501424102}
   - {fileID: 906469159}
   - {fileID: 183243925}
-  - {fileID: 1035617783}
   m_Father: {fileID: 0}
   m_RootOrder: 2
 --- !u!4 &183243925 stripped
@@ -953,7 +953,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 550242659}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13b9ae0e8ecf0da42b89e68b4825aa66, type: 3}
+  m_Script: {fileID: 11500000, guid: ec685b0f6f832334fbd7f65a85a51ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _originalTimer1: 1
