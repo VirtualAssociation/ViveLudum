@@ -17,9 +17,14 @@ public class PNJsController : MonoBehaviour {
     public void ShapeShift()
     {
         int pnjId = Random.Range(0, Pnjs.Length);
+        string shName = "";
         ShapeShift sh = Pnjs[pnjId].GetComponent<ShapeShift>();
+        if (sh.objName != null)
+        {
+            shName = sh.objName;
+        }
         GameObject go = characters[Random.Range(0, characters.Length)];
-        while (sh.objName == sh.objName)
+        while (go.name == sh.objName)
         {
             go = characters[Random.Range(0, characters.Length)];
         }
