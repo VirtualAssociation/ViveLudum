@@ -48,36 +48,36 @@ public class ShapeShift : MonoBehaviour {
         
     }
 
-    /*public void ChangeMesh(int meshNum, GameObject newObj)
+    public void ChangeMesh(GameObject newObj, Vector3 position)
     {
-        _currentPos = _currentTransform.position;
         _currentRot = _currentTransform.rotation;
-
-        Instantiate(newObj, _currentPos, _currentRot);
+        Destroy(this.transform.GetChild(0).gameObject);
+        GameObject objInst = Instantiate(newObj, Vector3.zero, _currentRot) as GameObject;
+        objInst.transform.parent = this.transform;
+        objInst.transform.localPosition = position;
     }
 
-    public void ChangeMesh(int meshNum, GameObject newObj, Vector3 position)
+    public void ChangeMesh(GameObject newObj, Vector3 position, Quaternion rotation)
     {
-        _currentPos = _currentTransform.position;
         _currentRot = _currentTransform.rotation;
+        Destroy(this.transform.GetChild(0).gameObject);
+        GameObject objInst = Instantiate(newObj, Vector3.zero, _currentRot) as GameObject;
+        objInst.transform.parent = this.transform;
+        objInst.transform.localPosition = position;
+        objInst.transform.localRotation = rotation;
+    }
 
-        Instantiate(newObj, _currentPos, _currentRot);
+    public void ChangeMesh(GameObject newObj, Vector3 position, Quaternion rotation, Vector3 scale)
+    {
+        _currentRot = _currentTransform.rotation;
+        Destroy(this.transform.GetChild(0).gameObject);
+        GameObject objInst = Instantiate(newObj, Vector3.zero, _currentRot) as GameObject;
+        objInst.transform.parent = this.transform;
+        objInst.transform.localPosition = position;
+        objInst.transform.localRotation = rotation;
+        objInst.transform.localScale = scale;
 
     }
 
-    public void ChangeMesh(int meshNum, GameObject newObj, Vector3 position, Vector3 rotation)
-    {
-        _currentPos = _currentTransform.position;
-        _currentRot = _currentTransform.rotation;
-
-        Instantiate(newObj, _currentPos, _currentRot);
-    }
-
-    public void ChangeMesh(int meshNum, GameObject newObj, Vector3 position, Vector3 rotation, float scale)
-    {
-        _currentPos = _currentTransform.position;
-        _currentRot = _currentTransform.rotation;
-
-        Instantiate(newObj, _currentPos, _currentRot);
-    }*/
+   
 }
