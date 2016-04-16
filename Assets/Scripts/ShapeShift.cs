@@ -32,10 +32,11 @@ public class ShapeShift : MonoBehaviour {
 
         ////////////////Pour les debugs
 
-	    if (Input.GetButtonUp("ChangeForm"))
+	   
+       /*if (Input.GetButtonUp("ChangeForm"))
         {
             ChangeMesh(_gameObjectTest);
-        }
+        }*/
     }
 
 
