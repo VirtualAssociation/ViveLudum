@@ -6,19 +6,17 @@ public class PNJsController : MonoBehaviour {
 
     public GameObject[] Pnjs { get { return GameObject.FindGameObjectsWithTag("Destructible"); } }
 
-    void Update()
-    {
-        if (Input.GetButtonUp("ChangeForm"))
-        {
-            ShapeShift();
-        }
-    }
-
     public void ShapeShift()
     {
+        foreach(GameObject pnj in Pnjs)
+        {
+            pnj.GetComponent<PNJ>().Reset();
+        }
         int pnjId = Random.Range(0, Pnjs.Length);
         string shName = "";
         ShapeShift sh = Pnjs[pnjId].GetComponent<ShapeShift>();
+        PNJ pnjScript = Pnjs[pnjId].GetComponent<PNJ>();
+        pnjScript.SetBad();
         if (sh.objName != null)
         {
             shName = sh.objName;

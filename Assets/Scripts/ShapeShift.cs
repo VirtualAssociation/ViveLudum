@@ -41,7 +41,10 @@ public class ShapeShift : MonoBehaviour {
     public void ChangeMesh(GameObject newObj)
     {
         _currentRot = _currentTransform.rotation;
-        Destroy(this.transform.GetChild(0).gameObject);
+        if(this.transform.GetChild(0) != null)
+        {
+            Destroy(this.transform.GetChild(0).gameObject);
+        }
         GameObject objInst = Instantiate(newObj, Vector3.zero, _currentRot) as GameObject;
         objName = newObj.name;
         objInst.transform.parent = this.transform;
