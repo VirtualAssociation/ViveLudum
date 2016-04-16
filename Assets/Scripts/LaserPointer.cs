@@ -115,6 +115,8 @@ public class LaserPointer : MonoBehaviour
 			argsIn.target = hit.transform;
 			OnPointerIn(argsIn);
 			previousContact = hit.transform;
+
+			Debug.Log("Laser Pointer collide with " + hit.collider.name);
 		}
 		if (!bHit)
 		{
