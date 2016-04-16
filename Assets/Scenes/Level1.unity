@@ -854,7 +854,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 179668, guid: 6de1404c24ac73949b283266c71c9e83, type: 2}
       propertyPath: m_TagString
-      value: Untagged
+      value: DestructibleChild
       objectReference: {fileID: 0}
     - target: {fileID: 493342, guid: 6de1404c24ac73949b283266c71c9e83, type: 2}
       propertyPath: m_RootOrder
@@ -1022,7 +1022,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 179668, guid: 6de1404c24ac73949b283266c71c9e83, type: 2}
       propertyPath: m_TagString
-      value: Untagged
+      value: DestructibleChild
       objectReference: {fileID: 0}
     - target: {fileID: 493342, guid: 6de1404c24ac73949b283266c71c9e83, type: 2}
       propertyPath: m_RootOrder
@@ -1167,7 +1167,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 179668, guid: 6de1404c24ac73949b283266c71c9e83, type: 2}
       propertyPath: m_TagString
-      value: Untagged
+      value: DestructibleChild
       objectReference: {fileID: 0}
     - target: {fileID: 493342, guid: 6de1404c24ac73949b283266c71c9e83, type: 2}
       propertyPath: m_RootOrder
@@ -1664,6 +1664,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 179668, guid: 6de1404c24ac73949b283266c71c9e83, type: 2}
+      propertyPath: m_TagString
+      value: DestructibleChild
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6de1404c24ac73949b283266c71c9e83, type: 2}
   m_IsPrefabParent: 0
@@ -1720,7 +1724,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 179668, guid: 6de1404c24ac73949b283266c71c9e83, type: 2}
       propertyPath: m_TagString
-      value: Untagged
+      value: DestructibleChild
       objectReference: {fileID: 0}
     - target: {fileID: 493342, guid: 6de1404c24ac73949b283266c71c9e83, type: 2}
       propertyPath: m_RootOrder
@@ -1844,7 +1848,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 179668, guid: 6de1404c24ac73949b283266c71c9e83, type: 2}
       propertyPath: m_TagString
-      value: Untagged
+      value: DestructibleChild
       objectReference: {fileID: 0}
     - target: {fileID: 493342, guid: 6de1404c24ac73949b283266c71c9e83, type: 2}
       propertyPath: m_RootOrder
@@ -1903,6 +1907,10 @@ Prefab:
     - target: {fileID: 108404, guid: 6de1404c24ac73949b283266c71c9e83, type: 2}
       propertyPath: m_Name
       value: PNJ1
+      objectReference: {fileID: 0}
+    - target: {fileID: 179668, guid: 6de1404c24ac73949b283266c71c9e83, type: 2}
+      propertyPath: m_TagString
+      value: DestructibleChild
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6de1404c24ac73949b283266c71c9e83, type: 2}
@@ -2182,6 +2190,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 179668, guid: 6de1404c24ac73949b283266c71c9e83, type: 2}
+      propertyPath: m_TagString
+      value: DestructibleChild
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6de1404c24ac73949b283266c71c9e83, type: 2}
   m_IsPrefabParent: 0
@@ -2354,7 +2366,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 179668, guid: 6de1404c24ac73949b283266c71c9e83, type: 2}
       propertyPath: m_TagString
-      value: Untagged
+      value: DestructibleChild
       objectReference: {fileID: 0}
     - target: {fileID: 493342, guid: 6de1404c24ac73949b283266c71c9e83, type: 2}
       propertyPath: m_RootOrder
