@@ -32,6 +32,10 @@ public class LaserPointer : MonoBehaviour
     public event ClickedEventHandler TriggerClicked;
     public event ClickedEventHandler TriggerUnclicked;
 
+    private AudioSource _audSrcLaser;
+    private bool _audIsPLaying = false;
+    private float _timerAud = 1f;
+
     // Use this for initialization
     void Start()
 	{
@@ -65,6 +69,8 @@ public class LaserPointer : MonoBehaviour
 		Material newMaterial = new Material(Shader.Find("Unlit/Color"));
 		newMaterial.SetColor("_Color", color);
         pointer.GetComponent<MeshRenderer>().material = newMaterial;
+
+        _audSrcLaser = this.GetComponent<AudioSource>();
 	}
 
 	public virtual void OnPointerIn(LaserPointerEventArgs e)
@@ -91,6 +97,16 @@ public class LaserPointer : MonoBehaviour
     // Update is called once per frame
     void Update()
 	{
+        if (_audIsPLaying == true)
+        {
+            _timerAud -= Time.deltaTime;
+            if (_timerAud <= 0)
+            {
+                _audIsPLaying = false;
+                _timerAud = 1f;
+            }
+        }
+
 		float dist = 100f;
 
         Ray raycast = new Ray(transform.position, transform.forward);
@@ -129,6 +145,11 @@ public class LaserPointer : MonoBehaviour
         Vector2 axis = SteamVR_Controller.Input((int)_trackedObj.index).GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger);
         if (bHit && axis.x >= 1)
         {
+            if (_audIsPLaying == false)
+            {
+                _audSrcLaser.Play();
+                _audIsPLaying = true;
+            }
             GameObject go = hit.collider.gameObject;
             if (go.tag == "DestructibleChild")
             {
