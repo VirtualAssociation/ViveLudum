@@ -111,10 +111,6 @@ public class LaserPointer : MonoBehaviour
 			previousContact = hit.transform;
 
 			Debug.Log("Laser Pointer collide with " + hit.collider.name);
-			if (controller != null && controller.triggerPressed)
-			{
-				Object.DestroyImmediate(hit.collider);
-			}
 		}
 
 		if (!bHit)
@@ -125,7 +121,12 @@ public class LaserPointer : MonoBehaviour
 		{
 			dist = hit.distance;
 		}
-		
+
+		if (bHit && controller != null && controller.triggerPressed)
+		{
+			Object.DestroyImmediate(hit.collider);
+		}
+
 		pointer.transform.localPosition = new Vector3(0f, 0f, - dist / 2f);
 	}
 }
