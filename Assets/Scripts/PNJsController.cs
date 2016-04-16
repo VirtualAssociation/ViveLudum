@@ -10,3 +10,4 @@ public class PNJsController : MonoBehaviour {
         sh.ChangeMesh(1);
     }
 }
+
