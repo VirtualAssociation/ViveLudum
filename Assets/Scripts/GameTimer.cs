@@ -32,6 +32,8 @@ public class GameTimer : MonoBehaviour {
 
     private PNJsController pnjContr;
 
+    private bool _sndIsPlaying = false;
+
 	// Use this for initialization
 	void Start () {
         _timerPhase1 = _originalTimer1;
@@ -61,6 +63,15 @@ public class GameTimer : MonoBehaviour {
         if (_timerPhase2On == true)
         {
             _timerPhase2 -= Time.deltaTime;
+
+            if (_timerPhase2 <= _originalTimer2 / 2 && _sndIsPlaying == false)
+            {
+                _sndIsPlaying = true;
+                Debug.Log("Minnant");
+                _audSrcMainCam.Play();
+                pnjContr.ShapeShift();
+            }
+
             if (_timerPhase2 <= 0f)
             {
                 // Déclenchement Nuit
@@ -68,13 +79,10 @@ public class GameTimer : MonoBehaviour {
                 _timerPhase2 = _originalTimer2;
                 _nightSphere.SetActive(false); // passage jour
                 _timerPhase3On = true;
+                _sndIsPlaying = false;
             }
 
-            if (_timerPhase2 <= _originalTimer2 / 2)
-            {
-                pnjContr.ShapeShift();
-                _audSrcMainCam.Play();
-            }
+            
         }
 
         if (_timerPhase3On == true)

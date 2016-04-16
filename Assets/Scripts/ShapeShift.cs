@@ -46,7 +46,6 @@ public class ShapeShift : MonoBehaviour {
         objName = newObj.name;
         objInst.transform.parent = this.transform;
         objInst.transform.localPosition = Vector3.zero;
-        Debug.Log(objName);
         
         
         
