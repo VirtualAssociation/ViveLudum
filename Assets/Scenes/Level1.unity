@@ -431,6 +431,8 @@ GameObject:
   - 33: {fileID: 203984684}
   - 114: {fileID: 203984683}
   - 114: {fileID: 203984688}
+  - 114: {fileID: 203984690}
+  - 114: {fileID: 203984689}
   m_Layer: 0
   m_Name: Main Camera (origin) (1)
   m_TagString: Untagged
@@ -543,6 +545,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameObjectTest: {fileID: 0}
+--- !u!114 &203984689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 203984682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec685b0f6f832334fbd7f65a85a51ed6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _originalTimer1: 5
+  _originalTimer2: 5
+  _originalTimer3: 5
+  _nightSphere: {fileID: 1047867299}
+  _timerPhase1On: 1
+  _timerPhase2On: 0
+  _timerPhase3On: 0
+--- !u!114 &203984690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 203984682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdd6d10cdaaa91544a482e81a4c57d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characters:
+  - {fileID: 119246, guid: 178f012ddc84e88499a6f34735caf8b1, type: 2}
+  - {fileID: 116702, guid: f277bdb4a1a06bf478bca695df2746d3, type: 2}
 --- !u!1 &299473347
 GameObject:
   m_ObjectHideFlags: 0
@@ -849,8 +883,6 @@ GameObject:
   - 114: {fileID: 550242663}
   - 114: {fileID: 550242662}
   - 92: {fileID: 550242661}
-  - 114: {fileID: 550242666}
-  - 114: {fileID: 550242665}
   m_Layer: 0
   m_Name: Main Camera (head)
   m_TagString: MainCamera
@@ -945,36 +977,6 @@ Camera:
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
   m_StereoMirrorMode: 0
---- !u!114 &550242665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 550242659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec685b0f6f832334fbd7f65a85a51ed6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _originalTimer1: 1
-  _originalTimer2: 1
-  _timerPhase1On: 1
-  _timerPhase2On: 0
-  _nightSphere: {fileID: 1047867299}
---- !u!114 &550242666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 550242659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdd6d10cdaaa91544a482e81a4c57d89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characters:
-  - {fileID: 119246, guid: 178f012ddc84e88499a6f34735caf8b1, type: 2}
-  - {fileID: 116702, guid: f277bdb4a1a06bf478bca695df2746d3, type: 2}
 --- !u!1001 &563422672
 Prefab:
   m_ObjectHideFlags: 0
