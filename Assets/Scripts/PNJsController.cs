@@ -17,6 +17,7 @@ public class PNJsController : MonoBehaviour {
     public void ShapeShift()
     {
         int pnjId = Random.Range(0, Pnjs.Length);
+        Debug.Log(Pnjs);
         string shName = "";
         ShapeShift sh = Pnjs[pnjId].GetComponent<ShapeShift>();
         if (sh.objName != null)
