@@ -42,7 +42,7 @@ public class ShapeShift : MonoBehaviour {
         Destroy(this.transform.GetChild(0).gameObject);
         GameObject objInst = Instantiate(newObj, Vector3.zero, _currentRot) as GameObject;
         objInst.transform.parent = this.transform;
-        objInst.transform.position = Vector3.zero;
+        objInst.transform.localPosition = Vector3.zero;
         
         
         
