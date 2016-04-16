@@ -49,6 +49,7 @@ public class SteamVR_TrackedController : MonoBehaviour
 
     public virtual void OnTriggerClicked(ClickedEventArgs e)
     {
+        Debug.Log("OnTriggerClicked");
         if (TriggerClicked != null)
             TriggerClicked(this, e);
     }
@@ -123,6 +124,7 @@ public class SteamVR_TrackedController : MonoBehaviour
             if (trigger > 0L && !triggerPressed)
             {
                 triggerPressed = true;
+                Debug.Log("Yeah");
                 ClickedEventArgs e;
                 e.controllerIndex = controllerIndex;
                 e.flags = (uint)controllerState.ulButtonPressed;

@@ -11,7 +11,6 @@ public struct LaserPointerEventArgs
 
 public delegate void LaserPointerEventHandler(object sender, LaserPointerEventArgs e);
 
-
 public class LaserPointer : MonoBehaviour
 {
 	public bool active = true;
@@ -27,10 +26,18 @@ public class LaserPointer : MonoBehaviour
 
 	Transform previousContact = null;
 
-	// Use this for initialization
-	void Start()
+    private SteamVR_TrackedObject _trackedObj;
+    private bool _triggerPressed = false;
+
+    public event ClickedEventHandler TriggerClicked;
+    public event ClickedEventHandler TriggerUnclicked;
+
+    // Use this for initialization
+    void Start()
 	{
-		holder = new GameObject("Ray");
+        _trackedObj = GetComponent<SteamVR_TrackedObject>();
+
+        holder = new GameObject("Ray");
 		holder.transform.parent = this.transform;
 		holder.transform.localPosition = Vector3.zero;
 
@@ -72,25 +79,27 @@ public class LaserPointer : MonoBehaviour
 			PointerOut(this, e);
 	}
 
+    public virtual void OnTriggerClicked(ClickedEventArgs e)
+    {
+        if (TriggerClicked != null)
+            Debug.Log("OnTriggerClicked");
+        else
+            Debug.Log("OnTriggerClicked null");
+    }
 
-	// Update is called once per frame
-	void Update()
+
+    // Update is called once per frame
+    void Update()
 	{
 		float dist = 100f;
 
-		SteamVR_TrackedController controller = GetComponent<SteamVR_TrackedController>();
-
-		Ray raycast = new Ray(transform.position, transform.forward);
+        Ray raycast = new Ray(transform.position, transform.forward);
 		RaycastHit hit;
 		bool bHit = Physics.Raycast(raycast, out hit);
 
-		if (previousContact && previousContact != hit.transform)
+        if (previousContact && previousContact != hit.transform)
 		{
 			LaserPointerEventArgs args = new LaserPointerEventArgs();
-			if (controller != null)
-			{
-				args.controllerIndex = controller.controllerIndex;
-			}
 			args.distance = 0f;
 			args.flags = 0;
 			args.target = previousContact;
@@ -100,17 +109,11 @@ public class LaserPointer : MonoBehaviour
 		if (bHit && previousContact != hit.transform)
 		{
 			LaserPointerEventArgs argsIn = new LaserPointerEventArgs();
-			if (controller != null)
-			{
-				argsIn.controllerIndex = controller.controllerIndex;
-			}
 			argsIn.distance = hit.distance;
 			argsIn.flags = 0;
 			argsIn.target = hit.transform;
 			OnPointerIn(argsIn);
 			previousContact = hit.transform;
-
-			Debug.Log("Laser Pointer collide with " + hit.collider.name);
 		}
 
 		if (!bHit)
@@ -122,11 +125,22 @@ public class LaserPointer : MonoBehaviour
 			dist = hit.distance;
 		}
 
-		if (bHit && controller != null && controller.triggerPressed)
-		{
-			Object.DestroyImmediate(hit.collider);
-		}
+        SteamVR_TrackedController controller = GetComponent<SteamVR_TrackedController>();
+        Vector2 axis = SteamVR_Controller.Input((int)_trackedObj.index).GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger);
+        if (bHit && axis.x >= 1)
+        {
+            if (hit.collider.gameObject.name != "Ground")
+            {
+                Object.DestroyImmediate(hit.collider.gameObject);
+                SteamVR_Controller.Input((int)_trackedObj.index).TriggerHapticPulse(1500);
+            }
+        }
 
-		pointer.transform.localPosition = new Vector3(0f, 0f, - dist / 2f);
+        if (axis.x < 1)
+        {
+            
+        }
+        pointer.transform.localScale = new Vector3(thickness, thickness, dist);
+        pointer.transform.localPosition = new Vector3(0f, 0f, - dist / 2f);
 	}
 }
