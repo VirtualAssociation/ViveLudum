@@ -3,17 +3,17 @@ using System.Collections;
 
 public class GameTimer : MonoBehaviour {
 
-
     [SerializeField]
     private float _originalTimer1;
     [SerializeField]
     private float _originalTimer2;
     private float _timerPhase1;
     private float _timerPhase2;
-    public bool _timerPhase1On = false;
+    public bool _timerPhase1On = true;
     public bool _timerPhase2On = false;
 
-
+    [SerializeField]
+    private GameObject _nightSphere;
 
 	// Use this for initialization
 	void Start () {
@@ -32,6 +32,8 @@ public class GameTimer : MonoBehaviour {
                 _timerPhase1 = _originalTimer1;
 
                 ///Déclenchement Jour
+                _nightSphere.SetActive(true); // passage nuit
+
             }
         }
         else
@@ -47,6 +49,8 @@ public class GameTimer : MonoBehaviour {
                 // Déclenchement Nuit
                 _timerPhase2On = false;
                 _timerPhase2 = _originalTimer2;
+
+                _nightSphere.SetActive(false); // passage jour
             }
         }
         else
