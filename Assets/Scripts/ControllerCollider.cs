@@ -3,41 +3,24 @@ using System.Collections;
 
 public class ControllerCollider : MonoBehaviour
 {
-    private SteamVR_TrackedObject trackedObj;
-    private GameObject pickup;
+    private SteamVR_TrackedObject _trackedObj;
 
     // Use this for initialization
     void Start()
     {
-        trackedObj = GetComponent<SteamVR_TrackedObject>();
+        _trackedObj = GetComponent<SteamVR_TrackedObject>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        SteamVR_Controller.Device controller = SteamVR_Controller.Input((int)trackedObj.index);
+        SteamVR_Controller.Device controller = SteamVR_Controller.Input((int)_trackedObj.index);
         bool triggerDown = controller.GetTouchDown(SteamVR_Controller.ButtonMask.Trigger);
         bool triggerUp = controller.GetTouchUp(SteamVR_Controller.ButtonMask.Trigger);
 
-        if (triggerDown && pickup != null)
+        if (triggerDown)
         {
-            pickup.transform.parent = this.transform;
-            pickup.GetComponent<Rigidbody>().useGravity = false;
+            Debug.Log("TriggerDown");
         }
-        if (triggerUp && pickup != null)
-        {
-            pickup.transform.parent = null;
-            pickup.GetComponent<Rigidbody>().useGravity = true;
-        }
-    }
-
-    private void OnTriggerEnter(Collider collider)
-    {
-        pickup = collider.gameObject;
-    }
-
-    private void OnTriggerExit(Collider collider)
-    {
-        pickup = null;
     }
 }
