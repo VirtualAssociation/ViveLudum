@@ -162,7 +162,7 @@ Light:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 7108456}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 6
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
@@ -185,7 +185,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_Lightmapping: 4
-  m_BounceIntensity: 0.97
+  m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
@@ -701,17 +701,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 519110e2967e91d4b9b2b0b37c478e2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _meshList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  _gameObjectTest: {fileID: 0}
 --- !u!1001 &275493918
 Prefab:
   m_ObjectHideFlags: 0
@@ -1661,7 +1651,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1047867300
 Transform:
   m_ObjectHideFlags: 0
