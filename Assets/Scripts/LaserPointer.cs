@@ -16,7 +16,7 @@ public class LaserPointer : MonoBehaviour
 {
 	public bool active = true;
 	public Color color;
-	public float thickness = 0.002f;
+    public float thickness = 0.002f;
 	public GameObject holder;
 	public GameObject pointer;
 	bool isActive = false;
@@ -30,7 +30,7 @@ public class LaserPointer : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-		holder = new GameObject();
+		holder = new GameObject("Ray");
 		holder.transform.parent = this.transform;
 		holder.transform.localPosition = Vector3.zero;
 
@@ -57,7 +57,7 @@ public class LaserPointer : MonoBehaviour
 		}
 		Material newMaterial = new Material(Shader.Find("Unlit/Color"));
 		newMaterial.SetColor("_Color", color);
-		pointer.GetComponent<MeshRenderer>().material = newMaterial;
+        pointer.GetComponent<MeshRenderer>().material = newMaterial;
 	}
 
 	public virtual void OnPointerIn(LaserPointerEventArgs e)
@@ -76,17 +76,11 @@ public class LaserPointer : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (!isActive)
-		{
-			isActive = true;
-			this.transform.GetChild(0).gameObject.SetActive(true);
-		}
-
 		float dist = 100f;
 
 		SteamVR_TrackedController controller = GetComponent<SteamVR_TrackedController>();
 
-		Ray raycast = new Ray(transform.position, - transform.forward);
+		Ray raycast = new Ray(transform.position, transform.forward);
 		RaycastHit hit;
 		bool bHit = Physics.Raycast(raycast, out hit);
 
@@ -133,6 +127,6 @@ public class LaserPointer : MonoBehaviour
 		{
 			pointer.transform.localScale = new Vector3(thickness, thickness, dist);
 		}
-		pointer.transform.localPosition = new Vector3(0f, 0f, dist / 2f);
+		pointer.transform.localPosition = new Vector3(0f, 0f, - dist / 2f);
 	}
 }
