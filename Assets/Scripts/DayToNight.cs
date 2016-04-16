@@ -13,7 +13,7 @@ public class DayToNight : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
         float perc = Time.time - _start / nightDuration;
-        GameObject.Find("CameraNightQuad");
+        GameObject nightQuad = GameObject.Find("CameraNightQuad");
 
     }
 
