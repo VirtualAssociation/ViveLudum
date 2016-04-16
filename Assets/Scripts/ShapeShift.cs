@@ -49,9 +49,6 @@ public class ShapeShift : MonoBehaviour {
         objInst.transform.parent = this.transform;
         objInst.transform.localPosition = Vector3.zero;
         Debug.Log(_objName);
-        
-        
-        
     }
 
     public void ChangeMesh(GameObject newObj, Vector3 position)
@@ -85,7 +82,6 @@ public class ShapeShift : MonoBehaviour {
         objInst.transform.localPosition = position;
         objInst.transform.localRotation = rotation;
         objInst.transform.localScale = scale;
-
     }
 
    
