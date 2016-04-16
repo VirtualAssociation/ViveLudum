@@ -129,7 +129,8 @@ public class LaserPointer : MonoBehaviour
         Vector2 axis = SteamVR_Controller.Input((int)_trackedObj.index).GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger);
         if (bHit && axis.x >= 1)
         {
-            if (hit.collider.gameObject.name != "Ground")
+            GameObject go = hit.collider.gameObject;
+            if (go.tag == "Destructible")
             {
                 Object.DestroyImmediate(hit.collider.gameObject);
                 SteamVR_Controller.Input((int)_trackedObj.index).TriggerHapticPulse(1500);
