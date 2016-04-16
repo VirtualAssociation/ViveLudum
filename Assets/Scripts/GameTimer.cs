@@ -15,6 +15,9 @@ public class GameTimer : MonoBehaviour {
     [SerializeField]
     private GameObject _nightSphere;
 
+    [SerializeField]
+    private AudioSource _audSrcMainCam;
+
     private float _timerPhase1;
 
     private float _timerPhase2;
@@ -27,11 +30,15 @@ public class GameTimer : MonoBehaviour {
 
     public bool _timerPhase3On = false;
 
+    private PNJsController pnjContr;
+
 	// Use this for initialization
 	void Start () {
         _timerPhase1 = _originalTimer1;
         _timerPhase2 = _originalTimer2;
         _timerPhase3 = _originalTimer3;
+
+        pnjContr = this.GetComponent<PNJsController>();
     }
 	
 	// Update is called once per frame
@@ -61,6 +68,12 @@ public class GameTimer : MonoBehaviour {
                 _timerPhase2 = _originalTimer2;
                 _nightSphere.SetActive(false); // passage jour
                 _timerPhase3On = true;
+            }
+
+            if (_timerPhase2 <= _originalTimer2 / 2)
+            {
+                pnjContr.ShapeShift();
+                _audSrcMainCam.Play();
             }
         }
 

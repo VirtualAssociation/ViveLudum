@@ -4,9 +4,6 @@ using System.Collections.Generic;
 
 public class ShapeShift : MonoBehaviour {
 
-    [SerializeField]
-    private GameObject _gameObjectTest;
-
     private MeshFilter _meshFilter;
 
     private Transform _currentTransform;
