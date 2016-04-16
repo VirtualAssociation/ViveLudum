@@ -153,8 +153,15 @@ public class LaserPointer : MonoBehaviour
             GameObject go = hit.collider.gameObject;
             if (go.tag == "DestructibleChild")
             {
-                Object.DestroyImmediate(hit.collider.gameObject);
+                
                 SteamVR_Controller.Input((int)_trackedObj.index).TriggerHapticPulse(1500);
+
+                if (go.GetComponentInParent<PNJ>().IsBad)
+                {
+                    Debug.Log("It's not the good one.");    
+                }
+
+                Object.DestroyImmediate(hit.collider.gameObject);
             }
         }
 

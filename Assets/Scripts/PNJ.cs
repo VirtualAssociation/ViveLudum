@@ -2,17 +2,20 @@
 using System.Collections;
 
 public class PNJ : MonoBehaviour {
+    public bool IsBad { get; private set; }
 
-    public Color Color;
+    void Start()
+    {
+        this.IsBad = false;
+    }
 
-	// Use this for initialization
-	void Start () {
-        Renderer renderer = this.GetComponent<Renderer>();
-        renderer.material.color = Color;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+	public void Reset()
+    {
+        IsBad = false;
+    }
+
+    public void SetBad()
+    {
+        IsBad = true;
+    }
 }
