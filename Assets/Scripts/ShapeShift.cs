@@ -17,12 +17,15 @@ public class ShapeShift : MonoBehaviour {
 
     private Quaternion _currentRot;
 
+    private string _objName;
+
 
 	// Use this for initialization
 	void Start () {
         _meshFilter = this.GetComponent<MeshFilter>();
         _currentTransform = this.GetComponent<Transform>();
-	}
+        _objName = this.transform.GetChild(0).gameObject.name;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -41,8 +44,10 @@ public class ShapeShift : MonoBehaviour {
         _currentRot = _currentTransform.rotation;
         Destroy(this.transform.GetChild(0).gameObject);
         GameObject objInst = Instantiate(newObj, Vector3.zero, _currentRot) as GameObject;
+        _objName = newObj.name;
         objInst.transform.parent = this.transform;
         objInst.transform.localPosition = Vector3.zero;
+        Debug.Log(_objName);
         
         
         
@@ -53,6 +58,7 @@ public class ShapeShift : MonoBehaviour {
         _currentRot = _currentTransform.rotation;
         Destroy(this.transform.GetChild(0).gameObject);
         GameObject objInst = Instantiate(newObj, Vector3.zero, _currentRot) as GameObject;
+        _objName = newObj.name;
         objInst.transform.parent = this.transform;
         objInst.transform.localPosition = position;
     }
@@ -62,6 +68,7 @@ public class ShapeShift : MonoBehaviour {
         _currentRot = _currentTransform.rotation;
         Destroy(this.transform.GetChild(0).gameObject);
         GameObject objInst = Instantiate(newObj, Vector3.zero, _currentRot) as GameObject;
+        _objName = newObj.name;
         objInst.transform.parent = this.transform;
         objInst.transform.localPosition = position;
         objInst.transform.localRotation = rotation;
@@ -72,6 +79,7 @@ public class ShapeShift : MonoBehaviour {
         _currentRot = _currentTransform.rotation;
         Destroy(this.transform.GetChild(0).gameObject);
         GameObject objInst = Instantiate(newObj, Vector3.zero, _currentRot) as GameObject;
+        _objName = newObj.name;
         objInst.transform.parent = this.transform;
         objInst.transform.localPosition = position;
         objInst.transform.localRotation = rotation;
