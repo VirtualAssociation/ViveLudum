@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
 public class ShapeShift : MonoBehaviour {
 
     [SerializeField]
-    private List<Mesh> _meshList;
+    private List<Mesh> _meshList = new List<Mesh>();
 
     private MeshFilter _meshFilter;
 
@@ -22,9 +21,8 @@ public class ShapeShift : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
         ////////////////Pour les debugs
-
+        /*
 	    if (Input.GetButtonUp("ChangeForm"))
         {
             _currentMesh = _currentMesh + 1;
@@ -68,6 +66,7 @@ public class ShapeShift : MonoBehaviour {
             }
             ChangeMesh(_currentMesh, new Vector3(this.transform.position.x + 1f, this.transform.position.y + 1f, this.transform.position.z + 1f), new Vector3(this.transform.position.x + 45f, this.transform.position.y, this.transform.position.z), 2f);
         }
+        */
     }
 
     public void ChangeMesh(int meshNum)
@@ -77,23 +76,19 @@ public class ShapeShift : MonoBehaviour {
 
     public void ChangeMesh(int meshNum, Vector3 position)
     {
-        _meshFilter.mesh = _meshList[meshNum];
+        ChangeMesh(meshNum);
         _currentTransform.position = position;
-        
     }
 
     public void ChangeMesh(int meshNum, Vector3 position, Vector3 rotation)
     {
-        _meshFilter.mesh = _meshList[meshNum];
-        _currentTransform.position = position;
+        ChangeMesh(meshNum, position);
         _currentTransform.rotation = Quaternion.Euler(rotation);
     }
 
     public void ChangeMesh(int meshNum, Vector3 position, Vector3 rotation, float scale)
     {
-        _meshFilter.mesh = _meshList[meshNum];
-        _currentTransform.position = position;
-        _currentTransform.rotation = Quaternion.Euler(rotation);
+        ChangeMesh(meshNum, position, rotation);
         _currentTransform.localScale = new Vector3(scale, scale, scale);
     }
 }
