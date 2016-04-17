@@ -672,6 +672,22 @@ Prefab:
       propertyPath: newPNJCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8207384, guid: 31b7c4cc41bcb0842a2780899930f451, type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11438318, guid: 31b7c4cc41bcb0842a2780899930f451, type: 2}
+      propertyPath: _dayTime
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11438318, guid: 31b7c4cc41bcb0842a2780899930f451, type: 2}
+      propertyPath: _nightTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11438318, guid: 31b7c4cc41bcb0842a2780899930f451, type: 2}
+      propertyPath: _morningTime
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 31b7c4cc41bcb0842a2780899930f451, type: 2}
   m_IsPrefabParent: 0
@@ -714,8 +730,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 11455128, guid: ad62c8e0ae6eebd428e00dc9af0144b1, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ad62c8e0ae6eebd428e00dc9af0144b1, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1934362109

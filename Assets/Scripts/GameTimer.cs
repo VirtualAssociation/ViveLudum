@@ -49,9 +49,11 @@ public class GameTimer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    if (_timerDayOn)
+
+        _pnjCtrl.ReorientPNJs();
+
+        if (_timerDayOn)
         {
-  
             _timerDay -= Time.deltaTime;
             if (_timerDay <= 0f)
             {

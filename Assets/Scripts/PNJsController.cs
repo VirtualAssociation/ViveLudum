@@ -66,9 +66,12 @@ public class PNJsController : MonoBehaviour {
         }
         foreach (GameObject pnj in Pnjs)
         {
-            Vector3 pnjDirection = this.transform.position - pnj.transform.position;
-            float randomSpeed = pnjSpeed + Random.Range(-pnjSpeedRandom, pnjSpeedRandom);
-            pnj.transform.position = pnj.transform.position + (pnjSpeed + randomSpeed) * pnjDirection;
+            if (pnj.transform.childCount > 0)
+            {
+                Vector3 pnjDirection = this.transform.position - pnj.transform.position;
+                float randomSpeed = pnjSpeed + Random.Range(-pnjSpeedRandom, pnjSpeedRandom);
+                pnj.transform.position = pnj.transform.position + (pnjSpeed + randomSpeed) * pnjDirection;
+            }
         }
     }
 
@@ -81,6 +84,20 @@ public class PNJsController : MonoBehaviour {
             float angle = Random.Range(0, 360);
             Vector3 pos = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * popRadius;
             Instantiate(prefab, pos, Quaternion.identity);
+        }
+    }
+
+    public void ReorientPNJs()
+    {
+        foreach (GameObject pnj in Pnjs)
+        {
+            if (pnj.transform.childCount > 0)
+            {
+                GameObject monster = pnj.transform.GetChild(0).transform.gameObject;
+                monster.transform.LookAt(this.transform);
+                monster.transform.Rotate(new Vector3(0, 1, 0), -90);
+            }
+            
         }
     }
 }
