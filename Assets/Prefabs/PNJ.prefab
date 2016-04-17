@@ -9,6 +9,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 493342}
   - 114: {fileID: 11469858}
+  - 114: {fileID: 11484838}
+  - 82: {fileID: 8209764}
   m_Layer: 0
   m_Name: PNJ
   m_TagString: Destructible
@@ -92,6 +94,80 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 179668}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!82 &8209764
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108404}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: ffa0d22e22bec5c4f8d5b4f210fb0c8c, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &11469858
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -103,6 +179,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 519110e2967e91d4b9b2b0b37c478e2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11484838
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b822b72d27f20b04580bb9d344d92b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pnjAudList:
+  - {fileID: 8300000, guid: db6b6cbe4bf12ce4ca6bc1b3c90675b2, type: 3}
+  - {fileID: 8300000, guid: 7b0610ff96c5ebc4a9759d15bdaae9e4, type: 3}
+  - {fileID: 8300000, guid: da4847ba88a48a542895f173be6e7a4e, type: 3}
+  - {fileID: 8300000, guid: ab1417fe3d601c347962536c87fee8b0, type: 3}
+  - {fileID: 8300000, guid: b13abd42491d7324a83b87d1cf9f7f67, type: 3}
+  - {fileID: 8300000, guid: c5953417153e4a440a3ee826b6eca554, type: 3}
+  - {fileID: 8300000, guid: a3dc03713f2ea5e40a3b7944e713e0b1, type: 3}
+  - {fileID: 8300000, guid: d7463e729e34a6747ba1113e81e912a6, type: 3}
+  - {fileID: 8300000, guid: b39ff473e8941f94fa4ef7f02c0aa91b, type: 3}
+  - {fileID: 8300000, guid: fb4fd0d665a92ad4c875a81264ee6e82, type: 3}
+  - {fileID: 8300000, guid: 142a609f0ce79e849a4ebc2b765279ba, type: 3}
+  - {fileID: 8300000, guid: dda0d2bcf76a50444a932a51eb465e19, type: 3}
+  - {fileID: 8300000, guid: 6d000a62d0adb164b93924d355fe5194, type: 3}
+  - {fileID: 8300000, guid: 3524513515ea015429b50119a63f3198, type: 3}
+  - {fileID: 8300000, guid: 29de96a4c08c0c54db42cdb8caa7aaac, type: 3}
+  - {fileID: 8300000, guid: 77265c82ec9b5184ab635698cb4c8c36, type: 3}
+  - {fileID: 8300000, guid: ffa0d22e22bec5c4f8d5b4f210fb0c8c, type: 3}
 --- !u!135 &13595890
 SphereCollider:
   m_ObjectHideFlags: 1
