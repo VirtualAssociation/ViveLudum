@@ -16,7 +16,6 @@ public class PNJ : MonoBehaviour {
 
     public void SetBad()
     {
-        Debug.Log(this.name + " Is Bad !");
         IsBad = true;
     }
 }

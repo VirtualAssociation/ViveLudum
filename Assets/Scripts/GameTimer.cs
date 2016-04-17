@@ -45,6 +45,8 @@ public class GameTimer : MonoBehaviour {
     public bool _timerNightOn = false;
     public bool _timerMorningOn = false;
 
+    public bool goToNext = false;
+
 	public LaserPointer[] _laserPointers; 
 
     private PNJsController _pnjCtrl;
@@ -68,6 +70,7 @@ public class GameTimer : MonoBehaviour {
         _timerMorning = _morningTime;
         _pnjCtrl = this.GetComponent<PNJsController>();
 		_laserPointers = this.GetComponentsInChildren<LaserPointer>();
+        Debug.Log(_laserPointers.Length);
 	}
 	
 	// Update is called once per frame
@@ -109,7 +112,7 @@ public class GameTimer : MonoBehaviour {
         if (_timerMorningOn)
         {
             _timerMorning -= Time.deltaTime;
-            if (_timerMorning <= 0f)
+            if (_timerMorning <= 0f || goToNext)
             {
                 _pnjCtrl.newPNJCount = _nbOfCycles / 2;
                 MorningToDay();
@@ -138,6 +141,7 @@ public class GameTimer : MonoBehaviour {
 		{
 			laser.enabled = true;
 		}
+        _pnjCtrl.goodKill = false;
     }
 
     void DayToNight()
@@ -153,13 +157,23 @@ public class GameTimer : MonoBehaviour {
 
     void MorningToDay()
     {
+        if (goToNext)
+        {
+            _audMorning.Stop();
+            _timerMorning = 0;
+        }
+        else
+        {
+            _timerMorning = _morningTime;
+        }
+        
         _audSrcNoon.Play();
         _timerMorningOn = false;
-        _timerMorning = _morningTime;
         _timerDayOn = true;
 
         _pnjCtrl.GenerateNewPNJs();
-        _pnjCtrl.MovePNJsCloser();
+        if (!_pnjCtrl.goodKill)
+            _pnjCtrl.MovePNJsCloser();
             
         _timerDay = (_audDay.clip.length * ((100 / _audDay.pitch) / 100));
         _audDay.Play();
