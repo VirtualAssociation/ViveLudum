@@ -98,13 +98,7 @@ public class GameTimer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (GameObject.Find("Ray"))
-        {
-            /*_laserLeft.transform.GetChild(2).localRotation = new Quaternion(0, 0, 0, 0);
-            _laserRight.transform.GetChild(2).localRotation = new Quaternion(0, 0, 0, 0);*/
-        }
-
-        if (happyAnimationStart)
+        /*if (happyAnimationStart)
         {
             if (Time.time - animationStartTime <= 2.0)
             {
@@ -114,7 +108,7 @@ public class GameTimer : MonoBehaviour {
                 }
             }
             
-        }
+        }*/
 
         _pnjCtrl.ReorientPNJs();
 
