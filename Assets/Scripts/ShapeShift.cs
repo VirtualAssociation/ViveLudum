@@ -27,16 +27,11 @@ public class ShapeShift : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        ////////////////Pour les debugs
-
-	   
        /*if (Input.GetButtonUp("ChangeForm"))
         {
             ChangeMesh(_gameObjectTest);
         }*/
     }
-
 
     public void ChangeMesh(GameObject newObj)
     {
@@ -49,9 +44,6 @@ public class ShapeShift : MonoBehaviour {
         objName = newObj.name;
         objInst.transform.parent = this.transform;
         objInst.transform.localPosition = Vector3.zero;
-        
-        
-        
     }
 
     public void ChangeMesh(GameObject newObj, Vector3 position)
