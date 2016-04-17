@@ -24,6 +24,12 @@ public class GameTimer : MonoBehaviour {
     [SerializeField]
     private AudioSource _audDay;
 
+    [SerializeField]
+    private AudioSource _audNight;
+
+    [SerializeField]
+    private AudioSource _audMorning;
+
     private float _timerDay;
     private float _timerNight;
     private float _timerMorning;
@@ -47,7 +53,9 @@ public class GameTimer : MonoBehaviour {
         //_timerDay = _dayTime;
         _timerDay = (_audDay.clip.length * ((100 / _audDay.pitch)/100));
         _audDay.Play();
-        _timerNight = _nightTime;
+        _timerNight = (_audNight.clip.length * ((100 / _audNight.pitch) / 100));
+        //_timerNight = _nightTime;
+        _timerMorning = (_audMorning.clip.length * ((100 / _audMorning.pitch) / 100));
         _timerMorning = _morningTime;
         _pnjCtrl = this.GetComponent<PNJsController>();
     }
@@ -111,9 +119,11 @@ public class GameTimer : MonoBehaviour {
         _timerNightOn = false;
         _timerNight = _nightTime;
         _timerMorningOn = true;
+        _timerMorning = (_audMorning.clip.length * ((100 / _audMorning.pitch) / 100));
         _soundPlaying = false;
         _sound2PLaying = false;
         _nightSphere.SetActive(false);
+        _audMorning.Play();
     }
 
     void DayToNight()
@@ -123,6 +133,8 @@ public class GameTimer : MonoBehaviour {
         _timerDay = _dayTime;
         _timerNightOn = true;
         _nightSphere.SetActive(true);
+        _timerNight = (_audNight.clip.length * ((100 / _audNight.pitch) / 100));
+        _audNight.Play();
     }
 
     void MorningToDay()
