@@ -34,8 +34,7 @@ public class GameTimer : MonoBehaviour {
     [SerializeField]
     private AudioClip[] _audListDay;
 
-    [SerializeField]
-    private AudioClip[] _audListMorning;
+    private int _currentAfternoonTrack = 0;
 
     private float _timerDay;
     private float _timerNight;
@@ -175,7 +174,12 @@ public class GameTimer : MonoBehaviour {
 
         _pnjCtrl.GenerateNewPNJs();
         _pnjCtrl.MovePNJsCloser();
-            
+
+        if (_currentAfternoonTrack < 15)
+        {
+            _audDay.clip = _audListDay[_currentAfternoonTrack + 1];
+            _currentAfternoonTrack += 1;
+        }
         _timerDay = (_audDay.clip.length * ((100 / _audDay.pitch) / 100));
         _audDay.Play();
 		foreach (LaserPointer laser in _laserPointers)
