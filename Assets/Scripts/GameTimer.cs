@@ -46,7 +46,6 @@ public class GameTimer : MonoBehaviour {
 	void Start () {
         //_timerDay = _dayTime;
         _timerDay = (_audDay.clip.length * ((100 / _audDay.pitch)/100));
-        Debug.Log(_audDay.pitch);
         _audDay.Play();
         _timerNight = _nightTime;
         _timerMorning = _morningTime;

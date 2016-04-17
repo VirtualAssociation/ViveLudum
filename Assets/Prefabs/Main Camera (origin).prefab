@@ -1004,7 +1004,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d34789be77aaf96419362e2a4d3f1a02, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1523,17 +1523,18 @@ MonoBehaviour:
   pnjSpeedRandom: 0.05
   newPNJCount: 2
   popRadius: 1
-  characters:
-  - {fileID: 199476, guid: 44ae301f12a1d854e8e561eefb79fb98, type: 2}
-  - {fileID: 199476, guid: 44ae301f12a1d854e8e561eefb79fb98, type: 2}
-  - {fileID: 0}
   pnjPrefabs:
-  - {fileID: 123786, guid: d76c23820959c584da7f5d7e2112863a, type: 2}
-  - {fileID: 107560, guid: ad62c8e0ae6eebd428e00dc9af0144b1, type: 2}
-  - {fileID: 199476, guid: 44ae301f12a1d854e8e561eefb79fb98, type: 2}
-  - {fileID: 198526, guid: a0aceae8f4357d049add437c8ad6f460, type: 2}
-  - {fileID: 104930, guid: 0b69386df225c95419e7e2d48a5483e5, type: 2}
-  - {fileID: 188398, guid: 40a15b19ace7d81438106eea505c8398, type: 2}
+  - {fileID: 117006, guid: fdef8419102b8094aaa135a4708f2961, type: 2}
+  - {fileID: 131622, guid: 16c60b7928f1ac440b9a9c88a5ff7639, type: 2}
+  - {fileID: 160646, guid: fc43e3a42177208408bb11128fabb0e0, type: 2}
+  - {fileID: 173060, guid: f01e9026aa3bc59418491c15ed3d8ffb, type: 2}
+  - {fileID: 197500, guid: c6311052d9efa31498fd1561e2be5f48, type: 2}
+  - {fileID: 159444, guid: c7d0d335a3599fa49bc9d56d380c1479, type: 2}
+  moveCloser: 0
+  bodyColorHappensOnCycle: 1
+  pnjSizeHappensOnCycle: 3
+  eyeColorHappensOnCycle: 5
+  pupilColorHappensOnCycle: 7
 --- !u!114 &11429646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1650,12 +1651,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec685b0f6f832334fbd7f65a85a51ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dayTime: 2
-  _nightTime: 2
-  _morningTime: 2
+  _dayTime: 3
+  _nightTime: 3
+  _morningTime: 3
   _nightSphere: {fileID: 154886}
   _audSrcMainCam: {fileID: 8262142}
   _audSrcNoon: {fileID: 8207384}
+  _audDay: {fileID: 0}
   _timerDayOn: 1
   _timerNightOn: 0
   _timerMorningOn: 0
@@ -1670,6 +1672,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 519110e2967e91d4b9b2b0b37c478e2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _monsters:
+  - {fileID: 155356, guid: 10cb90ec7c1511f418de0fc5c5b7735c, type: 2}
+  - {fileID: 195212, guid: 97f8df9f99c4f414a9f4da6f185778ff, type: 2}
+  - {fileID: 176492, guid: 57d0cd116f94fb9449422bd7eb5bd17d, type: 2}
+  - {fileID: 147366, guid: cdf99b426412b7944921ddcc2ab1f075, type: 2}
+  - {fileID: 148188, guid: 42da6a2257111a743a38c8fdbc5829d4, type: 2}
+  - {fileID: 163080, guid: 50857eeb780cf324aa1e7cf329e8eda1, type: 2}
 --- !u!114 &11438816
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -7,9 +7,12 @@ public class ShapeShift : MonoBehaviour {
     [HideInInspector]
     public string objName { get; private set; }
 
+    [SerializeField]
+    private GameObject[] _monsters;
+
 	// Use this for initialization
 	void Start () {
-        objName = this.transform.GetChild(0).gameObject.name;
+
     }
 	
 	// Update is called once per frame
@@ -28,6 +31,61 @@ public class ShapeShift : MonoBehaviour {
         Debug.Log("ChangeBodyColor");
         GameObject body = pnj.transform.GetChild(0).GetChild(0).gameObject;
         ChangeObjectColor(body, Random.ColorHSV());
+    }
+
+    public void ChangeBodyForm(GameObject pnj)
+    {
+        Random.seed = (int)Time.time;
+
+        GameObject currentMonster = pnj.transform.GetChild(0).gameObject;
+
+        // Find another monster
+        GameObject otherMonster = null;
+
+        bool indexOK = false;
+        int otherMonsterIndex = 0;
+        while (!indexOK)
+        {
+            Random.seed = (int)Time.time;
+            int index = Random.Range(1, 6);
+            if (currentMonster.name != "Monster_" + otherMonsterIndex)
+            {
+                indexOK = true;
+                otherMonsterIndex = index;
+            }
+        }
+
+        Debug.Log("from " + currentMonster.name + " to Monster_" + otherMonsterIndex);
+
+        // Instanciate Monster
+        foreach (GameObject m in _monsters)
+        {
+            if (m.name != currentMonster.name)
+            {
+                otherMonster = GameObject.Instantiate(m);
+                break;
+            }
+        }
+
+        GameObject currentBody = currentMonster.transform.GetChild(0).gameObject;
+        GameObject otherBody = otherMonster.transform.GetChild(0).gameObject;
+
+        // Apply current material to the new monster body
+        Material currentMaterial = currentBody.GetComponent<Renderer>().material;
+        otherBody.GetComponent<Renderer>().material = currentMaterial;
+
+        // Save current transform
+        otherMonster.transform.parent = currentMonster.transform.parent;
+        otherMonster.transform.position = currentMonster.transform.position;
+        otherMonster.transform.rotation = currentMonster.transform.rotation;
+        otherMonster.transform.localScale = currentMonster.transform.localScale;
+
+        // Destroy old body
+        string currentName = currentMonster.name;
+        Object.Destroy(currentMonster);
+
+        otherMonster.name = currentName;
+
     }
 
     public void ChangeEyeColor(GameObject pnj)

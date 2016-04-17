@@ -30,31 +30,33 @@ public class PNJsController : MonoBehaviour {
         }
 
         // Get a random PNJ
-        int randomID = Random.Range(0, Pnjs.Length);
-        GameObject randomPNJ = Pnjs[randomID];
-        ShapeShift shapeShift = randomPNJ.GetComponent<ShapeShift>();
+        GameObject randomPNJ = null;
+        while (randomPNJ == null)
+        {
+            int randomID = Random.Range(0, Pnjs.Length);
+            GameObject pnjTmp = Pnjs[randomID];
+            if (pnjTmp.transform.childCount > 0 && pnjTmp.transform.GetChild(0).childCount > 0)
+            {
+                randomPNJ = pnjTmp;
+            }
+        }
+        
+        ShapeShift shapeShift = this.GetComponent<ShapeShift>();
         PNJ pnjScript = randomPNJ.GetComponent<PNJ>();
 
         // ShapeShift the random PNJ
 
         pnjScript.SetBad();
 
-        if (cycleNum >= bodyColorHappensOnCycle)
-            shapeShift.ChangeBodyColor(randomPNJ);
-        if (cycleNum >= pnjSizeHappensOnCycle)
-            shapeShift.ChangeScale(randomPNJ);
-        if (cycleNum >= eyeColorHappensOnCycle)
-            shapeShift.ChangeEyeColor(randomPNJ);
-        if (cycleNum >= pupilColorHappensOnCycle)
-            shapeShift.ChangePupilColor(randomPNJ);
+        shapeShift.ChangeBodyForm(randomPNJ);
 
-        foreach (GameObject pnj in Pnjs)
+        /*foreach (GameObject pnj in Pnjs)
         {
             if (pnj.GetComponent<PNJ>().IsBad)
             {
                 pnj.GetComponent<PNJSoundController>().PlayNightSound(pnj);
             }
-        }
+        }*/
     }
 
     public void MovePNJsCloser()
