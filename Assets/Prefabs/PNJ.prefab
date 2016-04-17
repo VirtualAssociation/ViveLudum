@@ -11,6 +11,7 @@ GameObject:
   - 114: {fileID: 11469858}
   - 114: {fileID: 11484838}
   - 82: {fileID: 8209764}
+  - 114: {fileID: 11489660}
   m_Layer: 0
   m_Name: PNJ
   m_TagString: Destructible
@@ -30,8 +31,8 @@ GameObject:
   - 135: {fileID: 13595890}
   - 23: {fileID: 2367576}
   m_Layer: 0
-  m_Name: PNJ (6)
-  m_TagString: Untagged
+  m_Name: PNJ (10)
+  m_TagString: DestructibleChild
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 108404}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2192, y: 0.055922963, z: 0.05}
+  m_LocalPosition: {x: 0.54, y: 0.055922963, z: -0.609}
   m_LocalScale: {x: 0.07010998, y: 0.07010994, z: 0.07010994}
   m_Children:
   - {fileID: 409688}
@@ -208,6 +209,17 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 29de96a4c08c0c54db42cdb8caa7aaac, type: 3}
   - {fileID: 8300000, guid: 77265c82ec9b5184ab635698cb4c8c36, type: 3}
   - {fileID: 8300000, guid: ffa0d22e22bec5c4f8d5b4f210fb0c8c, type: 3}
+--- !u!114 &11489660
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbd0c22aa0af13c4eba4798ddefcc9fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &13595890
 SphereCollider:
   m_ObjectHideFlags: 1
