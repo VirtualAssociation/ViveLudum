@@ -147,6 +147,7 @@ public class LaserPointer : MonoBehaviour
         {
             if (_audIsPLaying == false)
             {
+                Debug.Log("Son Laser");
                 _audSrcLaser.Play();
                 _audIsPLaying = true;
             }
