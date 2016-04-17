@@ -64,6 +64,14 @@ public class GameTimer : MonoBehaviour {
 	public TextMesh helpText;
 	public TextMesh helpTextStep;
 
+    public enum STEP {
+        DAY,
+        NIGHT,
+        MORNING
+    };
+
+    public STEP step;
+
     // Use this for initialization
     void Start () {
     
@@ -79,15 +87,23 @@ public class GameTimer : MonoBehaviour {
         _laserRight.enabled = false;
 
         helpTextStep.text = "DAY";
+        step = STEP.DAY;
     }
 	
 	// Update is called once per frame
 	void Update () {
 
+        if (GameObject.Find("Ray"))
+        {
+            _laserLeft.transform.GetChild(2).localRotation = new Quaternion(0, 0, 0, 0);
+            _laserRight.transform.GetChild(2).localRotation = new Quaternion(0, 0, 0, 0);
+        }
+
         _pnjCtrl.ReorientPNJs();
 
         if (_timerDayOn)
         {
+            step = STEP.DAY;
             _timerDay -= Time.deltaTime;
             if (_timerDay <= 0f)
             {
@@ -103,6 +119,7 @@ public class GameTimer : MonoBehaviour {
 
         if (_timerNightOn)
         {
+            step = STEP.NIGHT;
             _timerNight -= Time.deltaTime;
 
             if (_timerNight <= _nightTime / 2f && _soundPlaying == false)
@@ -130,6 +147,7 @@ public class GameTimer : MonoBehaviour {
 
         if (_timerMorningOn)
         {
+            step = STEP.MORNING;
             _timerMorning -= Time.deltaTime;
             if (_timerMorning <= 0f || goToNext)
             {
