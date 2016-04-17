@@ -94,7 +94,6 @@ public class PNJsController : MonoBehaviour {
                 monster.transform.LookAt(this.transform);
                 monster.transform.Rotate(new Vector3(0, 1, 0), -90);
             }
-            
         }
     }
 }
