@@ -8,6 +8,7 @@ public class PNJsController : MonoBehaviour {
 
     public void ShapeShift()
     {
+        Debug.Log("ShapeShift");
         foreach(GameObject pnj in Pnjs)
         {
             pnj.GetComponent<PNJ>().Reset();
