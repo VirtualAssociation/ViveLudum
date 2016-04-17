@@ -638,11 +638,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dayTime: 2
-  _nightTime: 2
-  _morningTime: 2
+  _nightTime: 5
+  _morningTime: 5
   _nightSphere: {fileID: 1047867299}
   _audSrcMainCam: {fileID: 1995364875}
   _audSrcNoon: {fileID: 1995364876}
+  _audDay: {fileID: 271536074}
   _timerDayOn: 1
   _timerNightOn: 0
   _timerMorningOn: 0
@@ -736,14 +737,14 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 271536073}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2c5b1eb06d4adf441be42415217117e4, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 5feb16556a749794684e57a906319c09, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 0.257
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   Priority: 128
@@ -775,7 +776,7 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0

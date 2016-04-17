@@ -21,6 +21,9 @@ public class GameTimer : MonoBehaviour {
     [SerializeField]
     private AudioSource _audSrcNoon;
 
+    [SerializeField]
+    private AudioSource _audDay;
+
     private float _timerDay;
     private float _timerNight;
     private float _timerMorning;
@@ -41,7 +44,10 @@ public class GameTimer : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        _timerDay = _dayTime;
+        //_timerDay = _dayTime;
+        _timerDay = (_audDay.clip.length * ((100 / _audDay.pitch)/100));
+        Debug.Log(_audDay.pitch);
+        _audDay.Play();
         _timerNight = _nightTime;
         _timerMorning = _morningTime;
         _pnjCtrl = this.GetComponent<PNJsController>();
@@ -118,5 +124,7 @@ public class GameTimer : MonoBehaviour {
         _timerMorningOn = false;
         _timerMorning = _morningTime;
         _timerDayOn = true;
+        _timerDay = (_audDay.clip.length * ((100 / _audDay.pitch) / 100));
+        _audDay.Play();
     }
 }
