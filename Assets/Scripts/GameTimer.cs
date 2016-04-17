@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using Boo.Lang;
+
 
 public class GameTimer : MonoBehaviour {
 
