@@ -68,7 +68,10 @@ public class GameTimer : MonoBehaviour {
     private bool _sound2PLaying = false;
 
 	public TextMesh helpText;
-	public TextMesh helpTextStep;
+
+    public bool happyAnimationStart = false;
+    public bool angryAnimationStart = false;
+    public float animationStartTime;
 
     public enum STEP {
         DAY,
@@ -89,7 +92,6 @@ public class GameTimer : MonoBehaviour {
         _timerMorning = _morningTime;
         _pnjCtrl = this.GetComponent<PNJsController>();
 
-        helpTextStep.text = "DAY";
         step = STEP.DAY;
     }
 	
@@ -98,8 +100,20 @@ public class GameTimer : MonoBehaviour {
 
         if (GameObject.Find("Ray"))
         {
-            _laserLeft.transform.GetChild(2).localRotation = new Quaternion(0, 0, 0, 0);
-            _laserRight.transform.GetChild(2).localRotation = new Quaternion(0, 0, 0, 0);
+            /*_laserLeft.transform.GetChild(2).localRotation = new Quaternion(0, 0, 0, 0);
+            _laserRight.transform.GetChild(2).localRotation = new Quaternion(0, 0, 0, 0);*/
+        }
+
+        if (happyAnimationStart)
+        {
+            if (Time.time - animationStartTime <= 2.0)
+            {
+                foreach (GameObject pnj in _pnjCtrl.Pnjs)
+                {
+                    pnj.transform.position += new Vector3(0.0f, Mathf.Cos(Time.time), 0.0f);
+                }
+            }
+            
         }
 
         _pnjCtrl.ReorientPNJs();
@@ -176,8 +190,6 @@ public class GameTimer : MonoBehaviour {
         _iconLeft.ChangePhase();
         _iconRight.ChangePhase();
 
-        helpTextStep.text = "MORNING";
-
         _timerNightOn = false;
         _timerNight = _nightTime;
         _timerMorningOn = true;
@@ -196,7 +208,6 @@ public class GameTimer : MonoBehaviour {
         _iconLeft.ChangePhase();
         _iconRight.ChangePhase();
         
-        helpTextStep.text = "NIGHT";
         _timerDayOn = false;
         _timerDay = _dayTime;
         _timerNightOn = true;
@@ -210,8 +221,7 @@ public class GameTimer : MonoBehaviour {
         goToNext = false;
         _iconLeft.ChangePhase();
         _iconRight.ChangePhase();
-
-        helpTextStep.text = "DAY";
+        
         if (goToNext)
         {
             _audMorning.Stop();

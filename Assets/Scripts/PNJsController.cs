@@ -17,11 +17,6 @@ public class PNJsController : MonoBehaviour {
 
     public bool goodKill = false;
 
-    public int bodyColorHappensOnCycle = 1;
-    public int pnjSizeHappensOnCycle = 3;
-    public int eyeColorHappensOnCycle = 5;
-    public int pupilColorHappensOnCycle = 7;
-
     public void ShapeShift(int cycleNum)
     {
         // Reset All PNJs

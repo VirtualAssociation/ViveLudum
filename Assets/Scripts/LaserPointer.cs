@@ -139,7 +139,7 @@ public class LaserPointer : MonoBehaviour
 		}
 
         pointer.transform.localScale = new Vector3(thickness, thickness, -dist);
-        pointer.transform.localPosition = new Vector3(0f, 0f, dist / 2f);
+        pointer.transform.localPosition = new Vector3(0f, 0f, - dist / 2f);
 
         if (_gameTimer.step == GameTimer.STEP.DAY || _gameTimer.step == GameTimer.STEP.NIGHT)
             return;
@@ -160,6 +160,8 @@ public class LaserPointer : MonoBehaviour
                 if (go.GetComponentInParent<PNJ>().IsBad)
                 {
                     _pnjCtrl.goodKill = true;
+                    _gameTimer.happyAnimationStart = true;
+                    _gameTimer.animationStartTime = Time.time;
                 }
                 Object.DestroyImmediate(hit.collider.gameObject);
                 _gameTimer.goToNext = true;
