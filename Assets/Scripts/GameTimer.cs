@@ -28,6 +28,10 @@ public class GameTimer : MonoBehaviour {
 
     private PNJsController _pnjCtrl;
 
+	private int _nbOfCycles = 0;
+
+	public int Cycles { get { return _nbOfCycles; } }
+
     private bool _soundPlaying = false;
     private bool _sound2PLaying = false;
     
@@ -97,6 +101,7 @@ public class GameTimer : MonoBehaviour {
 
     void DayToNight()
     {
+	    _nbOfCycles++;
         _timerDayOn = false;
         _timerDay = _dayTime;
         _timerNightOn = true;
