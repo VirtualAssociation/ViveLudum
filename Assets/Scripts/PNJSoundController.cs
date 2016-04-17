@@ -9,7 +9,6 @@ public class PNJSoundController : MonoBehaviour {
     private AudioSource _audSrc;
     private int _currentAudIndex;
     private int _randomIndex;
-    private bool _test = true;
 
     [SerializeField]
     private AudioClip[] _pnjAudListNight;

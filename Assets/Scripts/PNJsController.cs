@@ -18,7 +18,12 @@ public class PNJsController : MonoBehaviour {
 
     public bool moveCloser = false;
 
-    public void ShapeShift()
+    public int bodyColorHappensOnCycle = 1;
+    public int pnjSizeHappensOnCycle = 3;
+    public int eyeColorHappensOnCycle = 5;
+    public int pupilColorHappensOnCycle = 7;
+
+    public void ShapeShift(int cycleNum)
     {
         // Reset All PNJs
         foreach(GameObject pnj in Pnjs)
@@ -28,17 +33,22 @@ public class PNJsController : MonoBehaviour {
 
         // Get a random PNJ
         int randomID = Random.Range(0, Pnjs.Length);
-        GameObject randomPNJ = Pnjs[randomID] as GameObject;
+        GameObject randomPNJ = Pnjs[randomID];
         ShapeShift shapeShift = randomPNJ.GetComponent<ShapeShift>();
         PNJ pnjScript = randomPNJ.GetComponent<PNJ>();
 
         // ShapeShift the random PNJ
+
         pnjScript.SetBad();
 
-        float randomScale = Random.Range(1, 3);
-        GameObject child = randomPNJ.transform.GetChild(0).gameObject;
-
-        shapeShift.ChangeMesh(child, randomScale);
+        if (cycleNum >= bodyColorHappensOnCycle)
+            shapeShift.ChangeBodyColor(randomPNJ);
+        if (cycleNum >= pnjSizeHappensOnCycle)
+            shapeShift.ChangeScale(randomPNJ);
+        if (cycleNum >= eyeColorHappensOnCycle)
+            shapeShift.ChangeEyeColor(randomPNJ);
+        if (cycleNum >= pupilColorHappensOnCycle)
+            shapeShift.ChangePupilColor(randomPNJ);
 
         foreach (GameObject pnj in Pnjs)
         {
@@ -66,7 +76,7 @@ public class PNJsController : MonoBehaviour {
 
     public void GenerateNewPNJs()
     {
-        List<float> randomAngles = new List<float>();
+        Random.seed = (int)Time.time;
         for (int i = 0; i < newPNJCount; ++i)
         {
             GameObject prefab = pnjPrefabs[Random.Range(0, pnjPrefabs.Length)];

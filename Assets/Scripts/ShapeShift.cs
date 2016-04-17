@@ -4,16 +4,11 @@ using System.Collections.Generic;
 
 public class ShapeShift : MonoBehaviour {
 
-    private Transform _currentTransform;
-    private Vector3 _currentPos;
-    private Quaternion _currentRot;
-
     [HideInInspector]
     public string objName { get; private set; }
 
 	// Use this for initialization
 	void Start () {
-        _currentTransform = this.GetComponent<Transform>();
         objName = this.transform.GetChild(0).gameObject.name;
     }
 	
@@ -21,56 +16,38 @@ public class ShapeShift : MonoBehaviour {
 	void Update () {
     }
 
-    public void ChangeMesh(GameObject newObj)
+    public void ChangeScale(GameObject pnj)
     {
-        _currentRot = _currentTransform.rotation;
-        if(this.transform.GetChild(0) != null)
-        {
-            Destroy(this.transform.GetChild(0).gameObject);
-        }
-        GameObject objInst = Instantiate(newObj, Vector3.zero, _currentRot) as GameObject;
-        objName = newObj.name;
-        objInst.transform.parent = this.transform;
-        objInst.transform.localPosition = Vector3.zero;
+        float randomScale = Random.Range(2, 3);
+        GameObject child = pnj.transform.GetChild(0).gameObject;
+        child.transform.localScale *= randomScale;
     }
 
-    public void ChangeMesh(GameObject newObj, Vector3 position)
+    public void ChangeBodyColor(GameObject pnj)
     {
-        _currentRot = _currentTransform.rotation;
-        Destroy(this.transform.GetChild(0).gameObject);
-        GameObject objInst = Instantiate(newObj, Vector3.zero, _currentRot) as GameObject;
-        objName = newObj.name;
-        objInst.transform.parent = this.transform;
-        objInst.transform.localPosition = position;
+        Debug.Log("ChangeBodyColor");
+        GameObject body = pnj.transform.GetChild(0).GetChild(0).gameObject;
+        ChangeObjectColor(body, Random.ColorHSV());
     }
 
-    public void ChangeMesh(GameObject newObj, Vector3 position, Quaternion rotation)
+    public void ChangeEyeColor(GameObject pnj)
     {
-        _currentRot = _currentTransform.rotation;
-        Destroy(this.transform.GetChild(0).gameObject);
-        GameObject objInst = Instantiate(newObj, Vector3.zero, _currentRot) as GameObject;
-        objName = newObj.name;
-        objInst.transform.parent = this.transform;
-        objInst.transform.localPosition = position;
-        objInst.transform.localRotation = rotation;
+        Debug.Log("ChangeEyeColor");
+        GameObject eye = pnj.transform.GetChild(0).GetChild(1).gameObject;
+        ChangeObjectColor(eye, Random.ColorHSV());
     }
 
-    public void ChangeMesh(GameObject newObj, Vector3 position, Quaternion rotation, Vector3 scale)
+    public void ChangePupilColor(GameObject pnj)
     {
-        _currentRot = _currentTransform.rotation;
-        Destroy(this.transform.GetChild(0).gameObject);
-        GameObject objInst = Instantiate(newObj, Vector3.zero, _currentRot) as GameObject;
-        objName = newObj.name;
-        objInst.transform.parent = this.transform;
-        objInst.transform.localPosition = position;
-        objInst.transform.localRotation = rotation;
-        objInst.transform.localScale = scale;
-
+        Debug.Log("ChangePupilColor");
+        GameObject pupil = pnj.transform.GetChild(0).GetChild(1).gameObject;
+        ChangeObjectColor(pupil, Random.ColorHSV());
     }
 
-    public void ChangeMesh(GameObject mesh, float uniformScale)
+    private void ChangeObjectColor(GameObject obj, Color color)
     {
-        mesh.transform.localScale *= uniformScale;
+        Debug.Log("ChangeObjectColor");
+        Material mat = obj.GetComponent<Renderer>().material;
+        mat.color = color;
     }
-
 }

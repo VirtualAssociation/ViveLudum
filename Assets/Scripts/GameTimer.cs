@@ -66,7 +66,7 @@ public class GameTimer : MonoBehaviour {
             if (_timerNight <= _nightTime / 2f && _soundPlaying == false)
             {
                 _soundPlaying = true;
-                _pnjCtrl.ShapeShift();
+                _pnjCtrl.ShapeShift(_nbOfCycles+1);
             }
 
             if (_timerNight <= _nightTime /4f && _sound2PLaying == false)
