@@ -36,6 +36,9 @@ public class LaserPointer : MonoBehaviour
     private PNJsController _pnjCtrl;
     private GameTimer _gameTimer;
 
+    [SerializeField]
+    private CheersScript _cheers;
+
     // Use this for initialization
     void Start()
 	{
@@ -159,9 +162,14 @@ public class LaserPointer : MonoBehaviour
                 SteamVR_Controller.Input((int)_trackedObj.index).TriggerHapticPulse(1500);
                 if (go.GetComponentInParent<PNJ>().IsBad)
                 {
+                    _cheers.GoodCheers();
                     _pnjCtrl.goodKill = true;
                     _gameTimer.happyAnimationStart = true;
                     _gameTimer.animationStartTime = Time.time;
+                }
+                else
+                {
+                    _cheers.BadCheers();
                 }
                 Object.DestroyImmediate(hit.collider.gameObject);
                 _gameTimer.goToNext = true;
