@@ -148,7 +148,7 @@ public class LaserPointer : MonoBehaviour
 
         if (bHit && hit.collider.name == "Monster_Start" && axis.x >= 1)
         {
-            Debug.Log("Monster_Start");
+            PlayLaserSound();
             hit.collider.GetComponent<GameStarter>().StartGame();
             return;
         }
