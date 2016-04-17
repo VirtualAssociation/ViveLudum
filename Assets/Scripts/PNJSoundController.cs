@@ -67,7 +67,6 @@ public class PNJSoundController : MonoBehaviour {
     public void PlayNightSound(GameObject pnj)
     {
         _pnj = pnj.GetComponent<PNJ>();
-        Debug.Log(_pnj.IsBad);
         if (_pnj.IsBad == true)
         {
             _audSrc.clip = _pnjAudListNight[Random.Range(0, _pnjAudListNight.Length - 1)];
