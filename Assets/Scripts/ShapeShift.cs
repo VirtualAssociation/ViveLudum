@@ -4,33 +4,21 @@ using System.Collections.Generic;
 
 public class ShapeShift : MonoBehaviour {
 
-    private MeshFilter _meshFilter;
-
     private Transform _currentTransform;
-
-    private int _currentMesh = 0;
-    
     private Vector3 _currentPos;
-
     private Quaternion _currentRot;
 
     [HideInInspector]
     public string objName { get; private set; }
 
-
 	// Use this for initialization
 	void Start () {
-        _meshFilter = this.GetComponent<MeshFilter>();
         _currentTransform = this.GetComponent<Transform>();
         objName = this.transform.GetChild(0).gameObject.name;
     }
 	
 	// Update is called once per frame
 	void Update () {
-       /*if (Input.GetButtonUp("ChangeForm"))
-        {
-            ChangeMesh(_gameObjectTest);
-        }*/
     }
 
     public void ChangeMesh(GameObject newObj)
