@@ -75,6 +75,7 @@ public class PNJsController : MonoBehaviour {
                 pnj.transform.position = pnj.transform.position + (pnjSpeed + randomSpeed) * pnjDirection;
             }
         }
+        moveCloser = false;
     }
 
     public void GenerateNewPNJs()

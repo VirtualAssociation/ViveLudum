@@ -1522,7 +1522,7 @@ MonoBehaviour:
   pnjSpeed: 0.1
   pnjSpeedRandom: 0.05
   newPNJCount: 2
-  popRadius: 1
+  popRadius: 0.5
   pnjPrefabs:
   - {fileID: 117006, guid: fdef8419102b8094aaa135a4708f2961, type: 2}
   - {fileID: 131622, guid: 16c60b7928f1ac440b9a9c88a5ff7639, type: 2}
@@ -1658,6 +1658,8 @@ MonoBehaviour:
   _audSrcMainCam: {fileID: 8262142}
   _audSrcNoon: {fileID: 8207384}
   _audDay: {fileID: 0}
+  _audNight: {fileID: 0}
+  _audMorning: {fileID: 0}
   _timerDayOn: 1
   _timerNightOn: 0
   _timerMorningOn: 0

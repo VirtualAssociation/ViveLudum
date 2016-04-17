@@ -151,9 +151,14 @@ public class LaserPointer : MonoBehaviour
                 
                 SteamVR_Controller.Input((int)_trackedObj.index).TriggerHapticPulse(1500);
 
-                if (go.GetComponentInParent<PNJ>().IsBad)
+                if (!go.GetComponentInParent<PNJ>().IsBad)
                 {
+                    Debug.Log("BAD KILL");
                     _pnjCtrl.moveCloser = true;
+                }
+                else
+                {
+                    Debug.Log("GOOD KILL");
                 }
 
                 Object.DestroyImmediate(hit.collider.gameObject);
