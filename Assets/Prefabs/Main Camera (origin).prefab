@@ -1360,7 +1360,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bccb76d6c1219c7488593c5f5c76b822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  active: 1
   color: {r: 0, g: 0, b: 0, a: 0}
   thickness: 0.002
   holder: {fileID: 0}
@@ -1660,9 +1659,28 @@ MonoBehaviour:
   _audDay: {fileID: 0}
   _audNight: {fileID: 0}
   _audMorning: {fileID: 0}
+  _audListDay:
+  - {fileID: 8300000, guid: cb43a0756d047ad45b22746df9c54d5d, type: 3}
+  - {fileID: 8300000, guid: 74a0323b74e2f99408ea78026a5427b1, type: 3}
+  - {fileID: 8300000, guid: 3dcba5d289d3e5846a8eccbbb44fad5f, type: 3}
+  - {fileID: 8300000, guid: f0517218edef79d4bb610a1bbf3e59b4, type: 3}
+  - {fileID: 8300000, guid: 4063c0c791ee1ab43b23c1d88b65212d, type: 3}
+  - {fileID: 8300000, guid: 25abc4dcc8e8f3e468099468f4bc9fa2, type: 3}
+  - {fileID: 8300000, guid: ed0df0f8db7e046409bb67d823e2f35c, type: 3}
+  - {fileID: 8300000, guid: 4a009fe35e332bc4694910831b06d4cb, type: 3}
+  - {fileID: 8300000, guid: 8f7d1642cf399de4892ec2037aedaec4, type: 3}
+  - {fileID: 8300000, guid: c0f42e9d9af54a447b0e0adf68ef3ebe, type: 3}
+  - {fileID: 8300000, guid: cbb1bcc35f67e1b4da85fa9654c628cb, type: 3}
+  - {fileID: 8300000, guid: 2edf8b163a60e484b95aa2c3ed32f019, type: 3}
+  - {fileID: 8300000, guid: 159bcf8045be0ed4b923b92ccd859405, type: 3}
+  - {fileID: 8300000, guid: e4d5ca94023201d45a7912893ca2d880, type: 3}
+  - {fileID: 8300000, guid: f78083cc69b762b438108832f18b97f3, type: 3}
+  - {fileID: 8300000, guid: 70cf88cf980fe4146a9708cd0f739a8d, type: 3}
   _timerDayOn: 1
   _timerNightOn: 0
   _timerMorningOn: 0
+  _laserPointers: []
+  Text: {fileID: 10290004}
 --- !u!114 &11438506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2044,7 +2062,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bccb76d6c1219c7488593c5f5c76b822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  active: 1
   color: {r: 0, g: 0, b: 0, a: 0}
   thickness: 0.002
   holder: {fileID: 0}
