@@ -6,7 +6,7 @@ public class PNJsController : MonoBehaviour {
     public float pnjSpeed = 0.1f;
     public float pnjSpeedRandom = 0.05f;
 
-    public int newPNJCount = 2;
+    public int newPNJCount = 1;
     public float popRadius = 1.0f;
 
     [SerializeField]
@@ -16,6 +16,7 @@ public class PNJsController : MonoBehaviour {
     [SerializeField]
     private GameObject[] pnjPrefabs;
 
+    public bool moveCloser = false;
 
     public void ShapeShift()
     {
@@ -27,15 +28,17 @@ public class PNJsController : MonoBehaviour {
 
         // Get a random PNJ
         int randomID = Random.Range(0, Pnjs.Length);
-        GameObject randomPNJ = Pnjs[randomID];
+        GameObject randomPNJ = Pnjs[randomID] as GameObject;
         ShapeShift shapeShift = randomPNJ.GetComponent<ShapeShift>();
         PNJ pnjScript = randomPNJ.GetComponent<PNJ>();
 
         // ShapeShift the random PNJ
         pnjScript.SetBad();
 
-        float randomScale = Random.Range(0, 1);
-        shapeShift.ChangeMesh(randomPNJ, randomScale + 0.5f);
+        float randomScale = Random.Range(1, 3);
+        GameObject child = randomPNJ.transform.GetChild(0).gameObject;
+
+        shapeShift.ChangeMesh(child, randomScale);
 
         foreach (GameObject pnj in Pnjs)
         {
@@ -48,6 +51,11 @@ public class PNJsController : MonoBehaviour {
 
     public void MovePNJsCloser()
     {
+        if (!moveCloser)
+        {
+            moveCloser = true;
+            return;
+        }
         foreach (GameObject pnj in Pnjs)
         {
             Vector3 pnjDirection = this.transform.position - pnj.transform.position;

@@ -67,7 +67,6 @@ public class GameTimer : MonoBehaviour {
             {
                 _soundPlaying = true;
                 _pnjCtrl.ShapeShift();
-                _pnjCtrl.MovePNJsCloser();
             }
 
             if (_timerNight <= _nightTime /4f && _sound2PLaying == false)
@@ -87,7 +86,7 @@ public class GameTimer : MonoBehaviour {
             _timerMorning -= Time.deltaTime;
             if (_timerMorning <= 0f)
             {
-                _pnjCtrl.GenerateNewPNJs();
+                _pnjCtrl.newPNJCount = _nbOfCycles / 2;
                 MorningToDay();
             }
         }
@@ -118,5 +117,7 @@ public class GameTimer : MonoBehaviour {
         _timerMorningOn = false;
         _timerMorning = _morningTime;
         _timerDayOn = true;
+        _pnjCtrl.GenerateNewPNJs();
+        _pnjCtrl.MovePNJsCloser();
     }
 }

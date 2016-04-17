@@ -34,6 +34,8 @@ public class LaserPointer : MonoBehaviour
     private float _laserSoundRefresh = 0.5f;
     private float _laserSoundInitial;
 
+    private PNJsController _pnjCtrl;
+
     // Use this for initialization
     void Start()
 	{
@@ -70,6 +72,8 @@ public class LaserPointer : MonoBehaviour
 
         _audSrcLaser = this.GetComponent<AudioSource>();
         _laserSoundInitial = _laserSoundRefresh;
+
+        _pnjCtrl = GameObject.Find("Main Camera (origin)").GetComponent<PNJsController>();
 
     }
 
@@ -149,7 +153,7 @@ public class LaserPointer : MonoBehaviour
 
                 if (go.GetComponentInParent<PNJ>().IsBad)
                 {
-                    Debug.Log("It's not the good one.");    
+                    _pnjCtrl.moveCloser = true;
                 }
 
                 Object.DestroyImmediate(hit.collider.gameObject);

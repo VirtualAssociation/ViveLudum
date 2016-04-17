@@ -46,7 +46,6 @@ GameObject:
   - 114: {fileID: 11445616}
   - 82: {fileID: 8238816}
   - 114: {fileID: 11469712}
-  - 114: {fileID: 11455128}
   m_Layer: 0
   m_Name: PNJ_2
   m_TagString: Destructible
@@ -95,7 +94,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 107560}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.194, y: 0.011, z: 0.197}
+  m_LocalPosition: {x: -0.194, y: -0.018, z: 0.197}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 450342}
@@ -121,7 +120,7 @@ Transform:
   m_GameObject: {fileID: 105712}
   m_LocalRotation: {x: 0, y: 0.1961867, z: 0, w: 0.9805666}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.0116231935, y: 0.0116231935, z: 0.011623208}
+  m_LocalScale: {x: 0.022, y: 0.022, z: 0.022}
   m_Children:
   - {fileID: 459824}
   - {fileID: 438368}
@@ -388,17 +387,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e91f8c2ce4ed53543a7b3e7b335644bd, type: 3}
   - {fileID: 8300000, guid: f37afdf43dcd4f6418d8deafd5678f8b, type: 3}
   _testAudio: {fileID: 8300000, guid: 731a4890f7c15a74cb8c070209aad876, type: 3}
---- !u!114 &11455128
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 107560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbd0c22aa0af13c4eba4798ddefcc9fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11469712
 MonoBehaviour:
   m_ObjectHideFlags: 1

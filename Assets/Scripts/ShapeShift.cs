@@ -68,10 +68,9 @@ public class ShapeShift : MonoBehaviour {
 
     }
 
-    public void ChangeMesh(GameObject newObj, float uniformScale)
+    public void ChangeMesh(GameObject mesh, float uniformScale)
     {
-        GameObject child = newObj.transform.GetChild(0).gameObject;
-        child.transform.localScale *= uniformScale;
+        mesh.transform.localScale *= uniformScale;
     }
 
 }

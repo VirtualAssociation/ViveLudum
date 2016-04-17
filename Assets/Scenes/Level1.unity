@@ -197,10 +197,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 2377496, guid: 525653607b64e1645a043ba8c29cae12, type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 78ebe970a44f16149ad13922035bb218, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 525653607b64e1645a043ba8c29cae12, type: 2}
   m_IsPrefabParent: 0
@@ -656,13 +652,25 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 790631914}
-    - target: {fileID: 6588520, guid: 31b7c4cc41bcb0842a2780899930f451, type: 2}
-      propertyPath: m_Size.x
-      value: 2.2
+    - target: {fileID: 11414410, guid: 31b7c4cc41bcb0842a2780899930f451, type: 2}
+      propertyPath: _dayTime
+      value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 6588520, guid: 31b7c4cc41bcb0842a2780899930f451, type: 2}
-      propertyPath: m_Size.z
-      value: 2.2
+    - target: {fileID: 11414410, guid: 31b7c4cc41bcb0842a2780899930f451, type: 2}
+      propertyPath: _nightTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11414410, guid: 31b7c4cc41bcb0842a2780899930f451, type: 2}
+      propertyPath: _morningTime
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11493812, guid: 31b7c4cc41bcb0842a2780899930f451, type: 2}
+      propertyPath: popRadius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11493812, guid: 31b7c4cc41bcb0842a2780899930f451, type: 2}
+      propertyPath: newPNJCount
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 31b7c4cc41bcb0842a2780899930f451, type: 2}
