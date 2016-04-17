@@ -7,7 +7,7 @@ public class CheersScript : MonoBehaviour {
     private AudioClip _audCheersG;
     [SerializeField]
     private AudioClip _audCheersB;
-
+    [SerializeField]
     private AudioSource _audSrc;
 
 	// Use this for initialization
