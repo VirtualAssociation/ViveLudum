@@ -144,10 +144,22 @@ public class LaserPointer : MonoBehaviour
         pointer.transform.localScale = new Vector3(thickness, thickness, -dist);
         pointer.transform.localPosition = new Vector3(0f, 0f, - dist / 2f);
 
+        Vector2 axis = SteamVR_Controller.Input((int)_trackedObj.index).GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger);
+
+        if (bHit && hit.collider.name == "Monster_Start" && axis.x >= 1)
+        {
+            Debug.Log("Monster_Start");
+            hit.collider.GetComponent<GameStarter>().StartGame();
+            return;
+        }
+
+        if (_gameTimer == null)
+            return;
+
         if (_gameTimer.step == GameTimer.STEP.DAY || _gameTimer.step == GameTimer.STEP.NIGHT)
             return;
         
-        Vector2 axis = SteamVR_Controller.Input((int)_trackedObj.index).GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger);
+        
 
         if (axis.x >= 1)
         {

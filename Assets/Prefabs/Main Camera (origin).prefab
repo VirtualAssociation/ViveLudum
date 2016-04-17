@@ -310,7 +310,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &163764
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,7 +471,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &190724
 GameObject:
   m_ObjectHideFlags: 1
@@ -1173,7 +1173,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d34789be77aaf96419362e2a4d3f1a02, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ca3397e93bd4486469c51b09d938d6ae, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1579,6 +1579,7 @@ MonoBehaviour:
   addRigidBody: 0
   reference: {fileID: 0}
   _laserSoundRefresh: 0.5
+  _cheers: {fileID: 0}
 --- !u!114 &11403612
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1636,7 +1637,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 170184}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab3f1f8e450caca4e9745b00979372b6, type: 3}
   m_Name: 
@@ -1734,6 +1735,7 @@ MonoBehaviour:
   pnjSpeedRandom: 0.05
   newPNJCount: 30
   popRadius: 0.5
+  popRadiusRandom: 0.2
   pnjPrefabs:
   - {fileID: 117006, guid: fdef8419102b8094aaa135a4708f2961, type: 2}
   - {fileID: 131622, guid: 16c60b7928f1ac440b9a9c88a5ff7639, type: 2}
@@ -1742,10 +1744,6 @@ MonoBehaviour:
   - {fileID: 197500, guid: c6311052d9efa31498fd1561e2be5f48, type: 2}
   - {fileID: 159444, guid: c7d0d335a3599fa49bc9d56d380c1479, type: 2}
   goodKill: 0
-  bodyColorHappensOnCycle: 1
-  pnjSizeHappensOnCycle: 3
-  eyeColorHappensOnCycle: 5
-  pupilColorHappensOnCycle: 7
 --- !u!114 &11429646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1857,14 +1855,14 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 170184}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec685b0f6f832334fbd7f65a85a51ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dayTime: 3
-  _nightTime: 3
-  _morningTime: 3
+  _dayTime: 5
+  _nightTime: 5
+  _morningTime: 5
   _nightSphere: {fileID: 154886}
   _audSrcMainCam: {fileID: 8262142}
   _audSrcNoon: {fileID: 8207384}
@@ -1890,12 +1888,16 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 70cf88cf980fe4146a9708cd0f739a8d, type: 3}
   _laserLeft: {fileID: 11494920}
   _laserRight: {fileID: 11403344}
+  _iconLeft: {fileID: 0}
+  _iconRight: {fileID: 0}
   _timerDayOn: 1
   _timerNightOn: 0
   _timerMorningOn: 0
   goToNext: 0
   helpText: {fileID: 10234206}
-  helpTextStep: {fileID: 10290004}
+  happyAnimationStart: 0
+  angryAnimationStart: 0
+  animationStartTime: 0
   step: 0
 --- !u!114 &11438506
 MonoBehaviour:
@@ -1903,7 +1905,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 170184}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 519110e2967e91d4b9b2b0b37c478e2f, type: 3}
   m_Name: 
@@ -2285,6 +2287,7 @@ MonoBehaviour:
   addRigidBody: 0
   reference: {fileID: 0}
   _laserSoundRefresh: 0.5
+  _cheers: {fileID: 0}
 --- !u!114 &11496932
 MonoBehaviour:
   m_ObjectHideFlags: 1
