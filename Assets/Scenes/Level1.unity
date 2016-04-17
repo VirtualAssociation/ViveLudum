@@ -497,6 +497,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 29de96a4c08c0c54db42cdb8caa7aaac, type: 3}
   - {fileID: 8300000, guid: 77265c82ec9b5184ab635698cb4c8c36, type: 3}
   - {fileID: 8300000, guid: ffa0d22e22bec5c4f8d5b4f210fb0c8c, type: 3}
+  _pnjAudListNight: []
 --- !u!114 &107523500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -667,6 +668,8 @@ GameObject:
   - 114: {fileID: 203984688}
   - 114: {fileID: 203984690}
   - 114: {fileID: 203984689}
+  - 65: {fileID: 203984692}
+  - 114: {fileID: 203984691}
   m_Layer: 0
   m_Name: Main Camera (origin) (1)
   m_TagString: Untagged
@@ -813,6 +816,29 @@ MonoBehaviour:
   characters:
   - {fileID: 127688, guid: e8aa92649ce91ae4bac13fab141d387c, type: 2}
   - {fileID: 190440, guid: d3cacc19e1cd9ff4394a1eeade067410, type: 2}
+--- !u!114 &203984691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 203984682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab3f1f8e450caca4e9745b00979372b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &203984692
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 203984682}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.7, y: 4.38, z: 2.6000001}
+  m_Center: {x: 0, y: 0.01, z: 0}
 --- !u!1 &271536073
 GameObject:
   m_ObjectHideFlags: 0
@@ -1809,6 +1835,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 29de96a4c08c0c54db42cdb8caa7aaac, type: 3}
   - {fileID: 8300000, guid: 77265c82ec9b5184ab635698cb4c8c36, type: 3}
   - {fileID: 8300000, guid: ffa0d22e22bec5c4f8d5b4f210fb0c8c, type: 3}
+  _pnjAudListNight: []
 --- !u!114 &1076635373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2070,6 +2097,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 29de96a4c08c0c54db42cdb8caa7aaac, type: 3}
   - {fileID: 8300000, guid: 77265c82ec9b5184ab635698cb4c8c36, type: 3}
   - {fileID: 8300000, guid: ffa0d22e22bec5c4f8d5b4f210fb0c8c, type: 3}
+  _pnjAudListNight: []
 --- !u!114 &1207297122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2634,6 +2662,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 29de96a4c08c0c54db42cdb8caa7aaac, type: 3}
   - {fileID: 8300000, guid: 77265c82ec9b5184ab635698cb4c8c36, type: 3}
   - {fileID: 8300000, guid: ffa0d22e22bec5c4f8d5b4f210fb0c8c, type: 3}
+  _pnjAudListNight: []
 --- !u!114 &1548134723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3267,6 +3296,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 29de96a4c08c0c54db42cdb8caa7aaac, type: 3}
   - {fileID: 8300000, guid: 77265c82ec9b5184ab635698cb4c8c36, type: 3}
   - {fileID: 8300000, guid: ffa0d22e22bec5c4f8d5b4f210fb0c8c, type: 3}
+  _pnjAudListNight: []
 --- !u!114 &2000664997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3567,6 +3597,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 29de96a4c08c0c54db42cdb8caa7aaac, type: 3}
   - {fileID: 8300000, guid: 77265c82ec9b5184ab635698cb4c8c36, type: 3}
   - {fileID: 8300000, guid: ffa0d22e22bec5c4f8d5b4f210fb0c8c, type: 3}
+  _pnjAudListNight: []
 --- !u!114 &2081911194
 MonoBehaviour:
   m_ObjectHideFlags: 0
