@@ -40,6 +40,12 @@ public class GameTimer : MonoBehaviour {
     [SerializeField]
     private LaserPointer _laserRight;
 
+    [SerializeField]
+    private ChangeIcon _iconLeft;
+
+    [SerializeField]
+    private ChangeIcon _iconRight;
+
     private int _currentAfternoonTrack = 0;
 
     private float _timerDay;
@@ -167,6 +173,9 @@ public class GameTimer : MonoBehaviour {
 
     void NightToMorning()
     {
+        _iconLeft.ChangePhase();
+        _iconRight.ChangePhase();
+
         helpTextStep.text = "MORNING";
 
         _timerNightOn = false;
@@ -183,6 +192,10 @@ public class GameTimer : MonoBehaviour {
 
     void DayToNight()
     {
+
+        _iconLeft.ChangePhase();
+        _iconRight.ChangePhase();
+        
         helpTextStep.text = "NIGHT";
         _timerDayOn = false;
         _timerDay = _dayTime;
@@ -195,6 +208,9 @@ public class GameTimer : MonoBehaviour {
     void MorningToDay()
     {
         goToNext = false;
+        _iconLeft.ChangePhase();
+        _iconRight.ChangePhase();
+
         helpTextStep.text = "DAY";
         if (goToNext)
         {
