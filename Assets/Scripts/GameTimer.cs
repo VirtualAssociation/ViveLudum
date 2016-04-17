@@ -57,7 +57,7 @@ public class GameTimer : MonoBehaviour {
     private bool _soundPlaying = false;
     private bool _sound2PLaying = false;
 
-	public TextMesh Text;
+	public TextMesh helpText;
 
     
 
@@ -88,8 +88,9 @@ public class GameTimer : MonoBehaviour {
                 DayToNight();
             }
 			// if first cycle
-			if (_nbOfCycles==0) {
-				Text.text = "Memorize the shape and colors of the blobs";
+			if (_nbOfCycles == 0)
+            {
+                helpText.text = "Memorize the shapes and colors of the blobs.";
 			}
         }
 
@@ -114,8 +115,9 @@ public class GameTimer : MonoBehaviour {
                 NightToMorning();
             }
 			// if first cycle
-			if (_nbOfCycles==0) {
-				Text.text = "Be careful, the boss can make noise during the night.";
+			if (_nbOfCycles==0)
+            {
+                helpText.text = "Be careful, the boss can make noise during the night.";
 			}
         }
 
@@ -128,8 +130,9 @@ public class GameTimer : MonoBehaviour {
                 MorningToDay();
             }
 			// if first cycle
-			if (_nbOfCycles==0) {
-				Text.text = "Eliminate the blob which has changed or they will all move forward!";
+			if (_nbOfCycles == 0)
+            {
+                helpText.text = "Eliminate the blob which has changed or they will all move forward!";
 			}
         }
 	}
@@ -160,7 +163,6 @@ public class GameTimer : MonoBehaviour {
 
     void DayToNight()
     {
-	    _nbOfCycles++;
         _timerDayOn = false;
         _timerDay = _dayTime;
         _timerNightOn = true;
@@ -202,5 +204,7 @@ public class GameTimer : MonoBehaviour {
 		{
 			laser.enabled = false;
 		}
-	}
+        _nbOfCycles++;
+        Object.Destroy(helpText);
+    }
 }
