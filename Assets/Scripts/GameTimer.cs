@@ -58,6 +58,7 @@ public class GameTimer : MonoBehaviour {
                 _soundPlaying = true;
                 _audSrcMainCam.Play();
                 _pnjCtrl.ShapeShift();
+                _pnjCtrl.MovePNJsCloser();
             }
 
             if (_timerNight <= 0f)
