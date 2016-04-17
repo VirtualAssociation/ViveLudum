@@ -33,8 +33,17 @@ public class PNJsController : MonoBehaviour {
 
         // ShapeShift the random PNJ
         pnjScript.SetBad();
+
         float randomScale = Random.Range(0, 1);
         shapeShift.ChangeMesh(randomPNJ, randomScale + 0.5f);
+
+        foreach (GameObject pnj in Pnjs)
+        {
+            if (pnj.GetComponent<PNJ>().IsBad == true)
+            {
+                pnj.GetComponent<PNJSoundController>().PlayNightSound(pnj);
+            }
+        }
     }
 
     public void MovePNJsCloser()
