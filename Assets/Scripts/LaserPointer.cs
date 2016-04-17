@@ -18,7 +18,6 @@ public class LaserPointer : MonoBehaviour
     public float thickness = 0.002f;
 	public GameObject holder;
 	public GameObject pointer;
-	bool isActive = false;
 	public bool addRigidBody = false;
 	public Transform reference;
 	public event LaserPointerEventHandler PointerIn;
@@ -27,14 +26,13 @@ public class LaserPointer : MonoBehaviour
 	Transform previousContact = null;
 
     private SteamVR_TrackedObject _trackedObj;
-    private bool _triggerPressed = false;
-
-    public event ClickedEventHandler TriggerClicked;
-    public event ClickedEventHandler TriggerUnclicked;
 
     private AudioSource _audSrcLaser;
     private bool _audIsPLaying = false;
-    private float _timerAud = 1f;
+
+    [SerializeField]
+    private float _laserSoundRefresh = 0.5f;
+    private float _laserSoundInitial;
 
     // Use this for initialization
     void Start()
@@ -71,7 +69,9 @@ public class LaserPointer : MonoBehaviour
         pointer.GetComponent<MeshRenderer>().material = newMaterial;
 
         _audSrcLaser = this.GetComponent<AudioSource>();
-	}
+        _laserSoundInitial = _laserSoundRefresh;
+
+    }
 
 	public virtual void OnPointerIn(LaserPointerEventArgs e)
 	{
@@ -85,25 +85,16 @@ public class LaserPointer : MonoBehaviour
 			PointerOut(this, e);
 	}
 
-    public virtual void OnTriggerClicked(ClickedEventArgs e)
-    {
-        if (TriggerClicked != null)
-            Debug.Log("OnTriggerClicked");
-        else
-            Debug.Log("OnTriggerClicked null");
-    }
-
-
     // Update is called once per frame
     void Update()
 	{
-        if (_audIsPLaying == true)
+        if (_audIsPLaying)
         {
-            _timerAud -= Time.deltaTime;
-            if (_timerAud <= 0)
+            _laserSoundRefresh -= Time.deltaTime;
+            if (_laserSoundRefresh <= 0)
             {
                 _audIsPLaying = false;
-                _timerAud = 1f;
+                _laserSoundRefresh = _laserSoundInitial;
             }
         }
 
@@ -141,16 +132,15 @@ public class LaserPointer : MonoBehaviour
 			dist = hit.distance;
 		}
 
-        SteamVR_TrackedController controller = GetComponent<SteamVR_TrackedController>();
         Vector2 axis = SteamVR_Controller.Input((int)_trackedObj.index).GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger);
+
+        if (axis.x >= 1)
+        {
+            PlayLaserSound();
+        }
+
         if (bHit && axis.x >= 1)
         {
-            if (_audIsPLaying == false)
-            {
-                Debug.Log("Son Laser");
-                _audSrcLaser.Play();
-                _audIsPLaying = true;
-            }
             GameObject go = hit.collider.gameObject;
             if (go.tag == "DestructibleChild")
             {
@@ -173,4 +163,14 @@ public class LaserPointer : MonoBehaviour
         pointer.transform.localScale = new Vector3(thickness, thickness, dist);
         pointer.transform.localPosition = new Vector3(0f, 0f, - dist / 2f);
 	}
+
+    void PlayLaserSound()
+    {
+        if (_audIsPLaying == false)
+        {
+            Debug.Log("Son Laser");
+            _audSrcLaser.Play();
+            _audIsPLaying = true;
+        }
+    }
 }
