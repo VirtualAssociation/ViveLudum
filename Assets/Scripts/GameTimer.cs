@@ -18,6 +18,9 @@ public class GameTimer : MonoBehaviour {
     [SerializeField]
     private AudioSource _audSrcMainCam;
 
+    [SerializeField]
+    private AudioSource _audSrcNoon;
+
     private float _timerDay;
     private float _timerNight;
     private float _timerMorning;
@@ -110,6 +113,7 @@ public class GameTimer : MonoBehaviour {
 
     void MorningToDay()
     {
+        _audSrcNoon.Play();
         _timerMorningOn = false;
         _timerMorning = _morningTime;
         _timerDayOn = true;

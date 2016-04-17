@@ -72,8 +72,8 @@ public class PNJSoundController : MonoBehaviour {
         Debug.Log(_pnj.IsBad);
         if (_pnj.IsBad == true)
         {
-            //_audSrc.clip = _pnjAudListNight[Random.Range(0, _pnjAudListNight.Length - 1)];
-            _audSrc.clip = _testAudio;
+            _audSrc.clip = _pnjAudListNight[Random.Range(0, _pnjAudListNight.Length - 1)];
+            //_audSrc.clip = _testAudio;
             _timerAudNight = _audSrc.clip.length;
             _timerAudNightOn = true;
             PlayMonsterSound();
