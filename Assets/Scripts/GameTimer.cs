@@ -34,6 +34,12 @@ public class GameTimer : MonoBehaviour {
     [SerializeField]
     private AudioClip[] _audListDay;
 
+    [SerializeField]
+    private LaserPointer _laserLeft;
+
+    [SerializeField]
+    private LaserPointer _laserRight;
+
     private int _currentAfternoonTrack = 0;
 
     private float _timerDay;
@@ -43,8 +49,6 @@ public class GameTimer : MonoBehaviour {
     public bool _timerDayOn = false;
     public bool _timerNightOn = false;
     public bool _timerMorningOn = false;
-
-	public LaserPointer[] _laserPointers; 
 
     private PNJsController _pnjCtrl;
 
@@ -69,7 +73,6 @@ public class GameTimer : MonoBehaviour {
         _timerMorning = (_audMorning.clip.length * ((100 / _audMorning.pitch) / 100));
         _timerMorning = _morningTime;
         _pnjCtrl = this.GetComponent<PNJsController>();
-		_laserPointers = this.GetComponentsInChildren<LaserPointer>();
 	}
 	
 	// Update is called once per frame
@@ -148,10 +151,9 @@ public class GameTimer : MonoBehaviour {
         _sound2PLaying = false;
         _nightSphere.SetActive(false);
         _audMorning.Play();
-		foreach(LaserPointer laser in _laserPointers)
-		{
-			laser.enabled = true;
-		}
+
+        _laserLeft.enabled = true;
+        _laserRight.enabled = true;
     }
 
     void DayToNight()
@@ -182,9 +184,8 @@ public class GameTimer : MonoBehaviour {
         }
         _timerDay = (_audDay.clip.length * ((100 / _audDay.pitch) / 100));
         _audDay.Play();
-		foreach (LaserPointer laser in _laserPointers)
-		{
-			laser.enabled = false;
-		}
+
+        _laserLeft.enabled = false;
+        _laserRight.enabled = false;
 	}
 }
