@@ -4,13 +4,13 @@ using System.Collections;
 public class GameTimer : MonoBehaviour {
 
     [SerializeField]
-    private float _originalTimer1;
+    private float _dayTime;
 
     [SerializeField]
-    private float _originalTimer2;
+    private float _nightTime;
 
     [SerializeField]
-    private float _originalTimer3;
+    private float _morningTime;
 
     [SerializeField]
     private GameObject _nightSphere;
@@ -18,82 +18,84 @@ public class GameTimer : MonoBehaviour {
     [SerializeField]
     private AudioSource _audSrcMainCam;
 
-    private float _timerPhase1;
+    private float _timerDay;
+    private float _timerNight;
+    private float _timerMorning;
 
-    private float _timerPhase2;
+    public bool _timerDayOn = false;
+    public bool _timerNightOn = false;
+    public bool _timerMorningOn = false;
 
-    private float _timerPhase3;
+    private PNJsController _pnjCtrl;
 
-    public bool _timerPhase1On = false;
-
-    public bool _timerPhase2On = false;
-
-    public bool _timerPhase3On = false;
-
-    private PNJsController pnjContr;
-
-    private bool _sndIsPlaying = false;
+    private bool _soundPlaying = false;
 
 	// Use this for initialization
 	void Start () {
-        _timerPhase1 = _originalTimer1;
-        _timerPhase2 = _originalTimer2;
-        _timerPhase3 = _originalTimer3;
-
-        pnjContr = this.GetComponent<PNJsController>();
+        _timerDay = _dayTime;
+        _timerNight = _nightTime;
+        _timerMorning = _morningTime;
+        _pnjCtrl = this.GetComponent<PNJsController>();
     }
 	
 	// Update is called once per frame
 	void Update () {
-	    if (_timerPhase1On == true)
+	    if (_timerDayOn)
         {
-            _timerPhase1 -= Time.deltaTime;
-            if (_timerPhase1 <= 0f)
+            _timerDay -= Time.deltaTime;
+            if (_timerDay <= 0f)
             {
-                _timerPhase1On = false;
-                _timerPhase1 = _originalTimer1;
-
-                ///Déclenchement Jour
-                _nightSphere.SetActive(true); // passage nuit
-                _timerPhase2On = true;
-
+                DayToNight();
             }
         }
 
-        if (_timerPhase2On == true)
+        if (_timerNightOn)
         {
-            _timerPhase2 -= Time.deltaTime;
-
-            if (_timerPhase2 <= _originalTimer2 / 2 && _sndIsPlaying == false)
+            _timerNight -= Time.deltaTime;
+            if (_timerNight <= _nightTime / 2 && _soundPlaying == false)
             {
-                _sndIsPlaying = true;
-                Debug.Log("Minnant");
+                _soundPlaying = true;
                 _audSrcMainCam.Play();
-                pnjContr.ShapeShift();
+                _pnjCtrl.ShapeShift();
             }
 
-            if (_timerPhase2 <= 0f)
+            if (_timerNight <= 0f)
             {
-                // Déclenchement Nuit
-                _timerPhase2On = false;
-                _timerPhase2 = _originalTimer2;
-                _nightSphere.SetActive(false); // passage jour
-                _timerPhase3On = true;
-                _sndIsPlaying = false;
+                NightToMorning();
             }
-
-            
         }
 
-        if (_timerPhase3On == true)
+        if (_timerMorningOn)
         {
-            _timerPhase3 -= Time.deltaTime;
-            if (_timerPhase3 <= 0f)
+            _timerMorning -= Time.deltaTime;
+            if (_timerMorning <= 0f)
             {
-                _timerPhase3On = false;
-                _timerPhase3 = _originalTimer3;
-                _timerPhase1On = true;
+                MorningToDay();
             }
         }
 	}
+
+    void NightToMorning()
+    {
+        _timerNightOn = false;
+        _timerNight = _nightTime;
+        _timerMorningOn = true;
+        _soundPlaying = false;
+        _nightSphere.SetActive(false);
+    }
+
+    void DayToNight()
+    {
+        _timerDayOn = false;
+        _timerDay = _dayTime;
+        _timerNightOn = true;
+        _nightSphere.SetActive(true);
+    }
+
+    void MorningToDay()
+    {
+        _timerMorningOn = false;
+        _timerMorning = _morningTime;
+        _timerNightOn = true;
+    }
 }
