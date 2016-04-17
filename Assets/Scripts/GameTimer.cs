@@ -42,6 +42,7 @@ public class GameTimer : MonoBehaviour {
 	void Update () {
 	    if (_timerDayOn)
         {
+  
             _timerDay -= Time.deltaTime;
             if (_timerDay <= 0f)
             {
@@ -96,6 +97,6 @@ public class GameTimer : MonoBehaviour {
     {
         _timerMorningOn = false;
         _timerMorning = _morningTime;
-        _timerNightOn = true;
+        _timerDayOn = true;
     }
 }
