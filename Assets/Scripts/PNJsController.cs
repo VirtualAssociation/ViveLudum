@@ -6,7 +6,7 @@ public class PNJsController : MonoBehaviour {
     public float pnjSpeed = 0.1f;
     public float pnjSpeedRandom = 0.05f;
 
-    public int newPNJCount = 1;
+    public int newPNJCount;
     public float popRadius = 1.0f;
 
     public GameObject[] Pnjs { get { return GameObject.FindGameObjectsWithTag("Destructible"); } }
@@ -79,7 +79,7 @@ public class PNJsController : MonoBehaviour {
         {
             GameObject prefab = pnjPrefabs[Random.Range(0, pnjPrefabs.Length)];
             float angle = Random.Range(0, 360);
-            Vector3 pos = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * popRadius;
+            Vector3 pos = this.transform.position + new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * popRadius;
             Instantiate(prefab, pos, Quaternion.identity);
         }
     }

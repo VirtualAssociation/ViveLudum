@@ -151,7 +151,6 @@ public class GameTimer : MonoBehaviour {
             _timerMorning -= Time.deltaTime;
             if (_timerMorning <= 0f || goToNext)
             {
-                _pnjCtrl.newPNJCount = _nbOfCycles / 2;
                 MorningToDay();
             }
 			// if first cycle
