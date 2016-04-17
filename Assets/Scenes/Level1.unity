@@ -340,7 +340,7 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -680,6 +680,10 @@ Prefab:
       propertyPath: _morningTime
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8207384, guid: 31b7c4cc41bcb0842a2780899930f451, type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: ca3397e93bd4486469c51b09d938d6ae, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 31b7c4cc41bcb0842a2780899930f451, type: 2}
   m_IsPrefabParent: 0
