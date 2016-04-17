@@ -4,74 +4,108 @@ using System.Collections.Generic;
 
 public class ShapeShift : MonoBehaviour {
 
-    private Transform _currentTransform;
-    private Vector3 _currentPos;
-    private Quaternion _currentRot;
-
     [HideInInspector]
     public string objName { get; private set; }
 
+    [SerializeField]
+    private GameObject[] _monsters;
+
 	// Use this for initialization
 	void Start () {
-        _currentTransform = this.GetComponent<Transform>();
-        objName = this.transform.GetChild(0).gameObject.name;
+
     }
 	
 	// Update is called once per frame
 	void Update () {
     }
 
-    public void ChangeMesh(GameObject newObj)
+    public void ChangeScale(GameObject pnj)
     {
-        _currentRot = _currentTransform.rotation;
-        if(this.transform.GetChild(0) != null)
+        float randomScale = Random.Range(2, 3);
+        GameObject child = pnj.transform.GetChild(0).gameObject;
+        child.transform.localScale *= randomScale;
+    }
+
+    public void ChangeBodyColor(GameObject pnj)
+    {
+        Debug.Log("ChangeBodyColor");
+        GameObject body = pnj.transform.GetChild(0).GetChild(0).gameObject;
+        ChangeObjectColor(body, Random.ColorHSV());
+    }
+
+    public void ChangeBodyForm(GameObject pnj)
+    {
+        Random.seed = (int)Time.time;
+
+        GameObject currentMonster = pnj.transform.GetChild(0).gameObject;
+
+        // Find another monster
+        GameObject otherMonster = null;
+
+        bool indexOK = false;
+        int otherMonsterIndex = 0;
+        while (!indexOK)
         {
-            Destroy(this.transform.GetChild(0).gameObject);
+            Random.seed = (int)Time.time;
+            int index = Random.Range(1, 6);
+            if (currentMonster.name != "Monster_" + otherMonsterIndex)
+            {
+                indexOK = true;
+                otherMonsterIndex = index;
+            }
         }
-        GameObject objInst = Instantiate(newObj, Vector3.zero, _currentRot) as GameObject;
-        objName = newObj.name;
-        objInst.transform.parent = this.transform;
-        objInst.transform.localPosition = Vector3.zero;
+
+        Debug.Log("from " + currentMonster.name + " to Monster_" + otherMonsterIndex);
+
+        // Instanciate Monster
+        foreach (GameObject m in _monsters)
+        {
+            if (m.name != currentMonster.name)
+            {
+                otherMonster = GameObject.Instantiate(m);
+                break;
+            }
+        }
+
+        GameObject currentBody = currentMonster.transform.GetChild(0).gameObject;
+        GameObject otherBody = otherMonster.transform.GetChild(0).gameObject;
+
+        // Apply current material to the new monster body
+        Material currentMaterial = currentBody.GetComponent<Renderer>().material;
+        otherBody.GetComponent<Renderer>().material = currentMaterial;
+
+        // Save current transform
+        otherMonster.transform.parent = currentMonster.transform.parent;
+        otherMonster.transform.position = currentMonster.transform.position;
+        otherMonster.transform.rotation = currentMonster.transform.rotation;
+        otherMonster.transform.localScale = currentMonster.transform.localScale;
+
+        // Destroy old body
+        string currentName = currentMonster.name;
+        Object.Destroy(currentMonster);
+
+        otherMonster.name = currentName;
+
     }
 
-    public void ChangeMesh(GameObject newObj, Vector3 position)
+    public void ChangeEyeColor(GameObject pnj)
     {
-        _currentRot = _currentTransform.rotation;
-        Destroy(this.transform.GetChild(0).gameObject);
-        GameObject objInst = Instantiate(newObj, Vector3.zero, _currentRot) as GameObject;
-        objName = newObj.name;
-        objInst.transform.parent = this.transform;
-        objInst.transform.localPosition = position;
+        Debug.Log("ChangeEyeColor");
+        GameObject eye = pnj.transform.GetChild(0).GetChild(1).gameObject;
+        ChangeObjectColor(eye, Random.ColorHSV());
     }
 
-    public void ChangeMesh(GameObject newObj, Vector3 position, Quaternion rotation)
+    public void ChangePupilColor(GameObject pnj)
     {
-        _currentRot = _currentTransform.rotation;
-        Destroy(this.transform.GetChild(0).gameObject);
-        GameObject objInst = Instantiate(newObj, Vector3.zero, _currentRot) as GameObject;
-        objName = newObj.name;
-        objInst.transform.parent = this.transform;
-        objInst.transform.localPosition = position;
-        objInst.transform.localRotation = rotation;
+        Debug.Log("ChangePupilColor");
+        GameObject pupil = pnj.transform.GetChild(0).GetChild(1).gameObject;
+        ChangeObjectColor(pupil, Random.ColorHSV());
     }
 
-    public void ChangeMesh(GameObject newObj, Vector3 position, Quaternion rotation, Vector3 scale)
+    private void ChangeObjectColor(GameObject obj, Color color)
     {
-        _currentRot = _currentTransform.rotation;
-        Destroy(this.transform.GetChild(0).gameObject);
-        GameObject objInst = Instantiate(newObj, Vector3.zero, _currentRot) as GameObject;
-        objName = newObj.name;
-        objInst.transform.parent = this.transform;
-        objInst.transform.localPosition = position;
-        objInst.transform.localRotation = rotation;
-        objInst.transform.localScale = scale;
-
+        Debug.Log("ChangeObjectColor");
+        Material mat = obj.GetComponent<Renderer>().material;
+        mat.color = color;
     }
-
-    public void ChangeMesh(GameObject newObj, float uniformScale)
-    {
-        GameObject child = newObj.transform.GetChild(0).gameObject;
-        child.transform.localScale *= uniformScale;
-    }
-
 }

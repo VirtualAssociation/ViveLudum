@@ -33,6 +33,8 @@ public class LaserPointer : MonoBehaviour
     private float _laserSoundRefresh = 0.5f;
     private float _laserSoundInitial;
 
+    private PNJsController _pnjCtrl;
+
     // Use this for initialization
     void Start()
 	{
@@ -69,6 +71,8 @@ public class LaserPointer : MonoBehaviour
 
         _audSrcLaser = this.GetComponent<AudioSource>();
         _laserSoundInitial = _laserSoundRefresh;
+
+        _pnjCtrl = GameObject.Find("Main Camera (origin)").GetComponent<PNJsController>();
 
     }
 
@@ -146,9 +150,14 @@ public class LaserPointer : MonoBehaviour
                 
                 SteamVR_Controller.Input((int)_trackedObj.index).TriggerHapticPulse(1500);
 
-                if (go.GetComponentInParent<PNJ>().IsBad)
+                if (!go.GetComponentInParent<PNJ>().IsBad)
                 {
-                    Debug.Log("It's not the good one.");    
+                    Debug.Log("BAD KILL");
+                    _pnjCtrl.moveCloser = true;
+                }
+                else
+                {
+                    Debug.Log("GOOD KILL");
                 }
 
                 Object.DestroyImmediate(hit.collider.gameObject);
@@ -167,7 +176,6 @@ public class LaserPointer : MonoBehaviour
     {
         if (_audIsPLaying == false)
         {
-            Debug.Log("Son Laser");
             _audSrcLaser.Play();
             _audIsPLaying = true;
         }

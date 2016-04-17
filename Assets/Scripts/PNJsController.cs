@@ -6,18 +6,22 @@ public class PNJsController : MonoBehaviour {
     public float pnjSpeed = 0.1f;
     public float pnjSpeedRandom = 0.05f;
 
-    public int newPNJCount = 2;
+    public int newPNJCount = 1;
     public float popRadius = 1.0f;
 
-    [SerializeField]
-    private GameObject[] characters;
     public GameObject[] Pnjs { get { return GameObject.FindGameObjectsWithTag("Destructible"); } }
 
     [SerializeField]
     private GameObject[] pnjPrefabs;
 
+    public bool moveCloser = false;
 
-    public void ShapeShift()
+    public int bodyColorHappensOnCycle = 1;
+    public int pnjSizeHappensOnCycle = 3;
+    public int eyeColorHappensOnCycle = 5;
+    public int pupilColorHappensOnCycle = 7;
+
+    public void ShapeShift(int cycleNum)
     {
         // Reset All PNJs
         foreach(GameObject pnj in Pnjs)
@@ -26,45 +30,77 @@ public class PNJsController : MonoBehaviour {
         }
 
         // Get a random PNJ
-        int randomID = Random.Range(0, Pnjs.Length);
-        GameObject randomPNJ = Pnjs[randomID];
-        ShapeShift shapeShift = randomPNJ.GetComponent<ShapeShift>();
+        GameObject randomPNJ = null;
+        while (randomPNJ == null)
+        {
+            int randomID = Random.Range(0, Pnjs.Length);
+            GameObject pnjTmp = Pnjs[randomID];
+            if (pnjTmp.transform.childCount > 0 && pnjTmp.transform.GetChild(0).childCount > 0)
+            {
+                randomPNJ = pnjTmp;
+            }
+        }
+        
+        ShapeShift shapeShift = this.GetComponent<ShapeShift>();
         PNJ pnjScript = randomPNJ.GetComponent<PNJ>();
 
         // ShapeShift the random PNJ
+
         pnjScript.SetBad();
 
-        float randomScale = Random.Range(0, 1);
-        shapeShift.ChangeMesh(randomPNJ, randomScale + 0.5f);
+        shapeShift.ChangeBodyForm(randomPNJ);
 
-        foreach (GameObject pnj in Pnjs)
+        /*foreach (GameObject pnj in Pnjs)
         {
             if (pnj.GetComponent<PNJ>().IsBad)
             {
                 pnj.GetComponent<PNJSoundController>().PlayNightSound(pnj);
             }
-        }
+        }*/
     }
 
     public void MovePNJsCloser()
     {
+        if (!moveCloser)
+        {
+            moveCloser = true;
+            return;
+        }
         foreach (GameObject pnj in Pnjs)
         {
-            Vector3 pnjDirection = this.transform.position - pnj.transform.position;
-            float randomSpeed = pnjSpeed + Random.Range(-pnjSpeedRandom, pnjSpeedRandom);
-            pnj.transform.position = pnj.transform.position + (pnjSpeed + randomSpeed) * pnjDirection;
+            if (pnj.transform.childCount > 0)
+            {
+                Vector3 pnjDirection = this.transform.position - pnj.transform.position;
+                float randomSpeed = pnjSpeed + Random.Range(-pnjSpeedRandom, pnjSpeedRandom);
+                pnj.transform.position = pnj.transform.position + (pnjSpeed + randomSpeed) * pnjDirection;
+            }
         }
+        moveCloser = false;
     }
 
     public void GenerateNewPNJs()
     {
-        List<float> randomAngles = new List<float>();
+        Random.seed = (int)Time.time;
         for (int i = 0; i < newPNJCount; ++i)
         {
             GameObject prefab = pnjPrefabs[Random.Range(0, pnjPrefabs.Length)];
             float angle = Random.Range(0, 360);
             Vector3 pos = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * popRadius;
             Instantiate(prefab, pos, Quaternion.identity);
+        }
+    }
+
+    public void ReorientPNJs()
+    {
+        foreach (GameObject pnj in Pnjs)
+        {
+            if (pnj.transform.childCount > 0)
+            {
+                GameObject monster = pnj.transform.GetChild(0).transform.gameObject;
+                monster.transform.LookAt(this.transform);
+                monster.transform.Rotate(new Vector3(0, 1, 0), -90);
+            }
+            
         }
     }
 }

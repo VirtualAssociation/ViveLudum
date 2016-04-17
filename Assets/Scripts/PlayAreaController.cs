@@ -18,6 +18,5 @@ public class PlayAreaController : MonoBehaviour
 		_timer.Stop();
 		NightSphere.SetActive(true);
 		Text.text = "YOU LOSE. Score: " + _timer.Cycles;
-		Debug.Log("You lose");
 	}
 }

@@ -118,6 +118,7 @@ public class SteamVR_TrackedController : MonoBehaviour
     void Update()
     {
 		var system = OpenVR.System;
+
 		if (system != null && system.GetControllerState(controllerIndex, ref controllerState))
 		{
 			ulong trigger = controllerState.ulButtonPressed & (1UL << ((int)EVRButtonId.k_EButton_SteamVR_Trigger));

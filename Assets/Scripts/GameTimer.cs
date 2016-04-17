@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class GameTimer : MonoBehaviour {
 
     [SerializeField]
@@ -29,6 +30,12 @@ public class GameTimer : MonoBehaviour {
 
     [SerializeField]
     private AudioSource _audMorning;
+
+    [SerializeField]
+    private AudioClip[] _audListDay;
+
+    [SerializeField]
+    private AudioClip[] _audListMorning;
 
     private float _timerDay;
     private float _timerNight;
@@ -65,9 +72,11 @@ public class GameTimer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    if (_timerDayOn)
+
+        _pnjCtrl.ReorientPNJs();
+
+        if (_timerDayOn)
         {
-  
             _timerDay -= Time.deltaTime;
             if (_timerDay <= 0f)
             {
@@ -82,8 +91,7 @@ public class GameTimer : MonoBehaviour {
             if (_timerNight <= _nightTime / 2f && _soundPlaying == false)
             {
                 _soundPlaying = true;
-                _pnjCtrl.ShapeShift();
-                _pnjCtrl.MovePNJsCloser();
+                _pnjCtrl.ShapeShift(_nbOfCycles+1);
             }
 
             if (_timerNight <= _nightTime /4f && _sound2PLaying == false)
@@ -103,7 +111,7 @@ public class GameTimer : MonoBehaviour {
             _timerMorning -= Time.deltaTime;
             if (_timerMorning <= 0f)
             {
-                _pnjCtrl.GenerateNewPNJs();
+                _pnjCtrl.newPNJCount = _nbOfCycles / 2;
                 MorningToDay();
             }
         }
@@ -149,6 +157,10 @@ public class GameTimer : MonoBehaviour {
         _timerMorningOn = false;
         _timerMorning = _morningTime;
         _timerDayOn = true;
+
+        _pnjCtrl.GenerateNewPNJs();
+        _pnjCtrl.MovePNJsCloser();
+            
         _timerDay = (_audDay.clip.length * ((100 / _audDay.pitch) / 100));
         _audDay.Play();
 		foreach (LaserPointer laser in _laserPointers)
