@@ -9,8 +9,6 @@ public class PNJsController : MonoBehaviour {
     public int newPNJCount = 1;
     public float popRadius = 1.0f;
 
-    [SerializeField]
-    private GameObject[] characters;
     public GameObject[] Pnjs { get { return GameObject.FindGameObjectsWithTag("Destructible"); } }
 
     [SerializeField]
