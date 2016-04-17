@@ -93,6 +93,7 @@ public class LaserPointer : MonoBehaviour
     // Update is called once per frame
     void Update()
 	{
+
         if (_audIsPLaying)
         {
             _laserSoundRefresh -= Time.deltaTime;
@@ -137,6 +138,12 @@ public class LaserPointer : MonoBehaviour
 			dist = hit.distance;
 		}
 
+        pointer.transform.localScale = new Vector3(thickness, thickness, -dist);
+        pointer.transform.localPosition = new Vector3(0f, 0f, dist / 2f);
+
+        if (_gameTimer.step == GameTimer.STEP.DAY || _gameTimer.step == GameTimer.STEP.NIGHT)
+            return;
+        
         Vector2 axis = SteamVR_Controller.Input((int)_trackedObj.index).GetAxis(Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger);
 
         if (axis.x >= 1)
@@ -159,12 +166,7 @@ public class LaserPointer : MonoBehaviour
             }
         }
 
-        if (axis.x < 1)
-        {
-            
-        }
-        pointer.transform.localScale = new Vector3(thickness, thickness, -dist);
-        pointer.transform.localPosition = new Vector3(0f, 0f, dist / 2f);
+        
 	}
 
     void PlayLaserSound()

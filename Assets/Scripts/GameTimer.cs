@@ -83,9 +83,6 @@ public class GameTimer : MonoBehaviour {
         _timerMorning = _morningTime;
         _pnjCtrl = this.GetComponent<PNJsController>();
 
-        _laserLeft.enabled = false;
-        _laserRight.enabled = false;
-
         helpTextStep.text = "DAY";
         step = STEP.DAY;
     }
@@ -182,14 +179,10 @@ public class GameTimer : MonoBehaviour {
         _audMorning.Play();
 
         _pnjCtrl.goodKill = false;
-
-        _laserLeft.enabled = true;
-        _laserRight.enabled = true;
     }
 
     void DayToNight()
     {
-        
         helpTextStep.text = "NIGHT";
         _timerDayOn = false;
         _timerDay = _dayTime;
@@ -201,7 +194,7 @@ public class GameTimer : MonoBehaviour {
 
     void MorningToDay()
     {
-        
+        goToNext = false;
         helpTextStep.text = "DAY";
         if (goToNext)
         {
@@ -232,8 +225,5 @@ public class GameTimer : MonoBehaviour {
         _audDay.Play();
         _nbOfCycles++;
         Object.Destroy(helpText);
-
-        _laserLeft.enabled = false;
-        _laserRight.enabled = false;
 	}
 }
