@@ -42,6 +42,7 @@ public class GameTimer : MonoBehaviour {
 	void Update () {
 	    if (_timerDayOn)
         {
+  
             _timerDay -= Time.deltaTime;
             if (_timerDay <= 0f)
             {
@@ -57,6 +58,7 @@ public class GameTimer : MonoBehaviour {
                 _soundPlaying = true;
                 _audSrcMainCam.Play();
                 _pnjCtrl.ShapeShift();
+                _pnjCtrl.MovePNJsCloser();
             }
 
             if (_timerNight <= 0f)
@@ -96,6 +98,6 @@ public class GameTimer : MonoBehaviour {
     {
         _timerMorningOn = false;
         _timerMorning = _morningTime;
-        _timerNightOn = true;
+        _timerDayOn = true;
     }
 }
