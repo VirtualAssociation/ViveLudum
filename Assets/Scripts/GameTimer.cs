@@ -99,6 +99,13 @@ public class GameTimer : MonoBehaviour {
         }
 	}
 
+	public void Stop()
+	{
+		_timerDayOn = false;
+		_timerNightOn = false;
+		_timerMorningOn = false;
+	}
+
     void NightToMorning()
     {
         _timerNightOn = false;
