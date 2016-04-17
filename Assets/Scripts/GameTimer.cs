@@ -55,6 +55,9 @@ public class GameTimer : MonoBehaviour {
 
     private bool _soundPlaying = false;
     private bool _sound2PLaying = false;
+
+	public TextMesh Text;
+
     
 
 	// Use this for initialization
@@ -82,6 +85,10 @@ public class GameTimer : MonoBehaviour {
             {
                 DayToNight();
             }
+			// if first cycle
+			if (_nbOfCycles==0) {
+				Text.text = "Memorize the shape and colors of the blobs";
+			}
         }
 
         if (_timerNightOn)
@@ -104,6 +111,10 @@ public class GameTimer : MonoBehaviour {
             {
                 NightToMorning();
             }
+			// if first cycle
+			if (_nbOfCycles==0) {
+				Text.text = "Be careful, the boss can make noise during the night.";
+			}
         }
 
         if (_timerMorningOn)
@@ -114,6 +125,10 @@ public class GameTimer : MonoBehaviour {
                 _pnjCtrl.newPNJCount = _nbOfCycles / 2;
                 MorningToDay();
             }
+			// if first cycle
+			if (_nbOfCycles==0) {
+				Text.text = "Eliminate the blob which has changed or they will all move forward!";
+			}
         }
 	}
 
