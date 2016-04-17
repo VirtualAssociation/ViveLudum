@@ -25,12 +25,21 @@ public class PNJsController : MonoBehaviour {
 
         // ShapeShift the random PNJ
         pnjScript.SetBad();
+
         GameObject go = characters[Random.Range(0, characters.Length)]; // Get a random shapeShift to apply on the PNJ
         while (go.name == shapeShift.objName)
         {
             go = characters[Random.Range(0, characters.Length)];
         }
         shapeShift.ChangeMesh(go);
+
+        foreach (GameObject pnj in Pnjs)
+        {
+            if (pnj.GetComponent<PNJ>().IsBad == true)
+            {
+                pnj.GetComponent<PNJSoundController>().PlayNightSound(pnj);
+            }
+        }
     }
 
     public void MovePNJsCloser()

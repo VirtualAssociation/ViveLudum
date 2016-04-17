@@ -29,6 +29,8 @@ public class GameTimer : MonoBehaviour {
     private PNJsController _pnjCtrl;
 
     private bool _soundPlaying = false;
+    private bool _sound2PLaying = false;
+    
 
 	// Use this for initialization
 	void Start () {
@@ -53,12 +55,18 @@ public class GameTimer : MonoBehaviour {
         if (_timerNightOn)
         {
             _timerNight -= Time.deltaTime;
-            if (_timerNight <= _nightTime / 2 && _soundPlaying == false)
+
+            if (_timerNight <= _nightTime / 2f && _soundPlaying == false)
             {
                 _soundPlaying = true;
-                _audSrcMainCam.Play();
                 _pnjCtrl.ShapeShift();
                 _pnjCtrl.MovePNJsCloser();
+            }
+
+            if (_timerNight <= _nightTime /4f && _sound2PLaying == false)
+            {
+                _audSrcMainCam.Play();
+                _sound2PLaying = true;
             }
 
             if (_timerNight <= 0f)
@@ -83,6 +91,7 @@ public class GameTimer : MonoBehaviour {
         _timerNight = _nightTime;
         _timerMorningOn = true;
         _soundPlaying = false;
+        _sound2PLaying = false;
         _nightSphere.SetActive(false);
     }
 
