@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 
 public class PNJsController : MonoBehaviour {
+
+    public float pnjSpeed = 0.1f;
+    public float pnjSpeedRandom = 0.05f;
+
     [SerializeField]
     private GameObject[] characters;
-
     public GameObject[] Pnjs { get { return GameObject.FindGameObjectsWithTag("Destructible"); } }
 
     public void ShapeShift()
     {
-        Debug.Log("ShapeShift");
-        
         // Reset All PNJs
         foreach(GameObject pnj in Pnjs)
         {
@@ -24,19 +25,22 @@ public class PNJsController : MonoBehaviour {
 
         // ShapeShift the random PNJ
         pnjScript.SetBad();
-        string randomName = "";
-        if (shapeShift.objName != null)
-        {
-            randomName = shapeShift.objName;
-        }
-
-        // Get a random shapeShift to apply on the PNJ
-        GameObject go = characters[Random.Range(0, characters.Length)];
+        GameObject go = characters[Random.Range(0, characters.Length)]; // Get a random shapeShift to apply on the PNJ
         while (go.name == shapeShift.objName)
         {
             go = characters[Random.Range(0, characters.Length)];
         }
         shapeShift.ChangeMesh(go);
+    }
+
+    public void MovePNJsCloser()
+    {
+        foreach (GameObject pnj in Pnjs)
+        {
+            Vector3 pnjDirection = this.transform.position - pnj.transform.position;
+            float randomSpeed = pnjSpeed + Random.Range(-pnjSpeedRandom, pnjSpeedRandom);
+            pnj.transform.position = pnj.transform.position + (pnjSpeed + randomSpeed) * pnjDirection;
+        }
     }
 }
 
