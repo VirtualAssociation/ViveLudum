@@ -39,7 +39,7 @@ public class PNJsController : MonoBehaviour {
 
         foreach (GameObject pnj in Pnjs)
         {
-            if (pnj.GetComponent<PNJ>().IsBad == true)
+            if (pnj.GetComponent<PNJ>().IsBad)
             {
                 pnj.GetComponent<PNJSoundController>().PlayNightSound(pnj);
             }

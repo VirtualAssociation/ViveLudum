@@ -381,7 +381,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 29de96a4c08c0c54db42cdb8caa7aaac, type: 3}
   - {fileID: 8300000, guid: 77265c82ec9b5184ab635698cb4c8c36, type: 3}
   - {fileID: 8300000, guid: ffa0d22e22bec5c4f8d5b4f210fb0c8c, type: 3}
-  _pnjAudListNight: []
+  _pnjAudListNight:
+  - {fileID: 8300000, guid: 731a4890f7c15a74cb8c070209aad876, type: 3}
+  - {fileID: 8300000, guid: 5e33f7f4f63e3334b90769fd9497c22a, type: 3}
+  - {fileID: 8300000, guid: 4988913e9eb9adc48a951bb650cfcb78, type: 3}
+  - {fileID: 8300000, guid: e91f8c2ce4ed53543a7b3e7b335644bd, type: 3}
+  - {fileID: 8300000, guid: f37afdf43dcd4f6418d8deafd5678f8b, type: 3}
+  _testAudio: {fileID: 8300000, guid: 731a4890f7c15a74cb8c070209aad876, type: 3}
 --- !u!114 &11455128
 MonoBehaviour:
   m_ObjectHideFlags: 1
