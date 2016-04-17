@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Boo.Lang;
 
 public class GameTimer : MonoBehaviour {
 
@@ -38,6 +39,8 @@ public class GameTimer : MonoBehaviour {
     public bool _timerNightOn = false;
     public bool _timerMorningOn = false;
 
+	public LaserPointer[] _laserPointers; 
+
     private PNJsController _pnjCtrl;
 
 	private int _nbOfCycles = 0;
@@ -58,7 +61,8 @@ public class GameTimer : MonoBehaviour {
         _timerMorning = (_audMorning.clip.length * ((100 / _audMorning.pitch) / 100));
         _timerMorning = _morningTime;
         _pnjCtrl = this.GetComponent<PNJsController>();
-    }
+		_laserPointers = this.GetComponentsInChildren<LaserPointer>();
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -123,6 +127,10 @@ public class GameTimer : MonoBehaviour {
         _sound2PLaying = false;
         _nightSphere.SetActive(false);
         _audMorning.Play();
+		foreach(LaserPointer laser in _laserPointers)
+		{
+			laser.enabled = true;
+		}
     }
 
     void DayToNight()
@@ -144,5 +152,9 @@ public class GameTimer : MonoBehaviour {
         _timerDayOn = true;
         _timerDay = (_audDay.clip.length * ((100 / _audDay.pitch) / 100));
         _audDay.Play();
-    }
+		foreach (LaserPointer laser in _laserPointers)
+		{
+			laser.enabled = false;
+		}
+	}
 }
