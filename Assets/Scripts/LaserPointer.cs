@@ -13,7 +13,6 @@ public delegate void LaserPointerEventHandler(object sender, LaserPointerEventAr
 
 public class LaserPointer : MonoBehaviour
 {
-	public bool active = true;
 	public Color color;
     public float thickness = 0.002f;
 	public GameObject holder;
