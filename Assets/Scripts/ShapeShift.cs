@@ -55,8 +55,6 @@ public class ShapeShift : MonoBehaviour {
             }
         }
 
-        Debug.Log("from " + currentMonster.name + " to Monster_" + otherMonsterIndex);
-
         // Instanciate Monster
         foreach (GameObject m in _monsters)
         {

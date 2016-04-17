@@ -14,7 +14,7 @@ public class PNJsController : MonoBehaviour {
     [SerializeField]
     private GameObject[] pnjPrefabs;
 
-    public bool moveCloser = false;
+    public bool goodKill = false;
 
     public int bodyColorHappensOnCycle = 1;
     public int pnjSizeHappensOnCycle = 3;
@@ -50,22 +50,17 @@ public class PNJsController : MonoBehaviour {
 
         shapeShift.ChangeBodyForm(randomPNJ);
 
-        /*foreach (GameObject pnj in Pnjs)
+        foreach (GameObject pnj in Pnjs)
         {
             if (pnj.GetComponent<PNJ>().IsBad)
             {
                 pnj.GetComponent<PNJSoundController>().PlayNightSound(pnj);
             }
-        }*/
+        }
     }
 
     public void MovePNJsCloser()
     {
-        if (!moveCloser)
-        {
-            moveCloser = true;
-            return;
-        }
         foreach (GameObject pnj in Pnjs)
         {
             if (pnj.transform.childCount > 0)
@@ -75,7 +70,6 @@ public class PNJsController : MonoBehaviour {
                 pnj.transform.position = pnj.transform.position + (pnjSpeed + randomSpeed) * pnjDirection;
             }
         }
-        moveCloser = false;
     }
 
     public void GenerateNewPNJs()
@@ -100,8 +94,6 @@ public class PNJsController : MonoBehaviour {
                 monster.transform.LookAt(this.transform);
                 monster.transform.Rotate(new Vector3(0, 1, 0), -90);
             }
-            
         }
     }
 }
-

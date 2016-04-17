@@ -50,6 +50,8 @@ public class GameTimer : MonoBehaviour {
     public bool _timerNightOn = false;
     public bool _timerMorningOn = false;
 
+    public bool goToNext = false;
+
     private PNJsController _pnjCtrl;
 
 	private int _nbOfCycles = 0;
@@ -59,21 +61,25 @@ public class GameTimer : MonoBehaviour {
     private bool _soundPlaying = false;
     private bool _sound2PLaying = false;
 
-	public TextMesh Text;
+	public TextMesh helpText;
+	public TextMesh helpTextStep;
 
+    // Use this for initialization
+    void Start () {
     
-
-	// Use this for initialization
-	void Start () {
-        //_timerDay = _dayTime;
         _timerDay = (_audDay.clip.length * ((100 / _audDay.pitch)/100));
         _audDay.Play();
         _timerNight = (_audNight.clip.length * ((100 / _audNight.pitch) / 100));
-        //_timerNight = _nightTime;
+
         _timerMorning = (_audMorning.clip.length * ((100 / _audMorning.pitch) / 100));
         _timerMorning = _morningTime;
         _pnjCtrl = this.GetComponent<PNJsController>();
-	}
+
+        _laserLeft.enabled = false;
+        _laserRight.enabled = false;
+
+        helpTextStep.text = "DAY";
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -87,9 +93,11 @@ public class GameTimer : MonoBehaviour {
             {
                 DayToNight();
             }
+
 			// if first cycle
-			if (_nbOfCycles==0) {
-				Text.text = "Memorize the shape and colors of the blobs";
+			if (_nbOfCycles == 0)
+            {
+                helpText.text = "Memorize the shapes and colors of the blobs.";
 			}
         }
 
@@ -114,22 +122,24 @@ public class GameTimer : MonoBehaviour {
                 NightToMorning();
             }
 			// if first cycle
-			if (_nbOfCycles==0) {
-				Text.text = "Be careful, the boss can make noise during the night.";
+			if (_nbOfCycles == 0)
+            {
+                helpText.text = "Be careful, the boss can make noise during the night.";
 			}
         }
 
         if (_timerMorningOn)
         {
             _timerMorning -= Time.deltaTime;
-            if (_timerMorning <= 0f)
+            if (_timerMorning <= 0f || goToNext)
             {
                 _pnjCtrl.newPNJCount = _nbOfCycles / 2;
                 MorningToDay();
             }
 			// if first cycle
-			if (_nbOfCycles==0) {
-				Text.text = "Eliminate the blob which has changed or they will all move forward!";
+			if (_nbOfCycles == 0)
+            {
+                helpText.text = "Eliminate the blob which has changed or they will all move forward!";
 			}
         }
 	}
@@ -143,6 +153,8 @@ public class GameTimer : MonoBehaviour {
 
     void NightToMorning()
     {
+        helpTextStep.text = "MORNING";
+
         _timerNightOn = false;
         _timerNight = _nightTime;
         _timerMorningOn = true;
@@ -152,13 +164,16 @@ public class GameTimer : MonoBehaviour {
         _nightSphere.SetActive(false);
         _audMorning.Play();
 
+        _pnjCtrl.goodKill = false;
+
         _laserLeft.enabled = true;
         _laserRight.enabled = true;
     }
 
     void DayToNight()
     {
-	    _nbOfCycles++;
+        
+        helpTextStep.text = "NIGHT";
         _timerDayOn = false;
         _timerDay = _dayTime;
         _timerNightOn = true;
@@ -169,21 +184,37 @@ public class GameTimer : MonoBehaviour {
 
     void MorningToDay()
     {
+        
+        helpTextStep.text = "DAY";
+        if (goToNext)
+        {
+            _audMorning.Stop();
+            _timerMorning = 0;
+        }
+        else
+        {
+            _timerMorning = _morningTime;
+        }
+        
         _audSrcNoon.Play();
         _timerMorningOn = false;
-        _timerMorning = _morningTime;
         _timerDayOn = true;
 
         _pnjCtrl.GenerateNewPNJs();
-        _pnjCtrl.MovePNJsCloser();
+
+        if (!_pnjCtrl.goodKill)
+            _pnjCtrl.MovePNJsCloser();
 
         if (_currentAfternoonTrack < 15)
         {
             _audDay.clip = _audListDay[_currentAfternoonTrack + 1];
             _currentAfternoonTrack += 1;
         }
+
         _timerDay = (_audDay.clip.length * ((100 / _audDay.pitch) / 100));
         _audDay.Play();
+        _nbOfCycles++;
+        Object.Destroy(helpText);
 
         _laserLeft.enabled = false;
         _laserRight.enabled = false;
