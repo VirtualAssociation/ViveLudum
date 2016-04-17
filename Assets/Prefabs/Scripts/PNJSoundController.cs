@@ -38,8 +38,6 @@ public class PNJSoundController : MonoBehaviour {
                 _timerAudNightOn = false;
             }
         }
-        
-
 	}
 
     public void PlayMonsterSound()

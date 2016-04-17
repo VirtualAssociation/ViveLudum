@@ -72,6 +72,7 @@ public class GameTimer : MonoBehaviour {
             _timerMorning -= Time.deltaTime;
             if (_timerMorning <= 0f)
             {
+                _pnjCtrl.GenerateNewPNJs();
                 MorningToDay();
             }
         }

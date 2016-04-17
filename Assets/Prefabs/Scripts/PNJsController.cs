@@ -1,13 +1,21 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class PNJsController : MonoBehaviour {
 
     public float pnjSpeed = 0.1f;
     public float pnjSpeedRandom = 0.05f;
 
+    public int newPNJCount = 2;
+    public float popRadius = 1.0f;
+
     [SerializeField]
     private GameObject[] characters;
     public GameObject[] Pnjs { get { return GameObject.FindGameObjectsWithTag("Destructible"); } }
+
+    [SerializeField]
+    private GameObject[] pnjPrefabs;
+
 
     public void ShapeShift()
     {
@@ -25,12 +33,8 @@ public class PNJsController : MonoBehaviour {
 
         // ShapeShift the random PNJ
         pnjScript.SetBad();
-        GameObject go = characters[Random.Range(0, characters.Length)]; // Get a random shapeShift to apply on the PNJ
-        while (go.name == shapeShift.objName)
-        {
-            go = characters[Random.Range(0, characters.Length)];
-        }
-        shapeShift.ChangeMesh(go);
+        float randomScale = Random.Range(0, 1);
+        shapeShift.ChangeMesh(randomPNJ, randomScale + 0.5f);
     }
 
     public void MovePNJsCloser()
@@ -40,6 +44,18 @@ public class PNJsController : MonoBehaviour {
             Vector3 pnjDirection = this.transform.position - pnj.transform.position;
             float randomSpeed = pnjSpeed + Random.Range(-pnjSpeedRandom, pnjSpeedRandom);
             pnj.transform.position = pnj.transform.position + (pnjSpeed + randomSpeed) * pnjDirection;
+        }
+    }
+
+    public void GenerateNewPNJs()
+    {
+        List<float> randomAngles = new List<float>();
+        for (int i = 0; i < newPNJCount; ++i)
+        {
+            GameObject prefab = pnjPrefabs[Random.Range(0, pnjPrefabs.Length)];
+            float angle = Random.Range(0, 360);
+            Vector3 pos = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * popRadius;
+            Instantiate(prefab, pos, Quaternion.identity);
         }
     }
 }
