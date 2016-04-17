@@ -11,6 +11,12 @@ public class PNJSoundController : MonoBehaviour {
     private int _randomIndex;
     private bool _test = true;
 
+    [SerializeField]
+    private AudioClip[] _pnjAudListNight;
+    private PNJ _pnj;
+    private float _timerAudNight;
+    private bool _timerAudNightOn = false;
+
 	// Use this for initialization
 	void Start () {
         _audSrc = this.GetComponent<AudioSource>();
@@ -23,16 +29,22 @@ public class PNJSoundController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    if (_test == true)
+        if (_timerAudNightOn == true)
         {
-            _test = false;
-            
+            _timerAudNight -= Time.deltaTime;
+            if (_timerAudNight <= 0f)
+            {
+                _audSrc.clip = _pnjAudList[_currentAudIndex];
+                _timerAudNightOn = false;
+            }
         }
+        
+
 	}
 
     public void PlayMonsterSound()
     {
-        _audSrc.clip = _pnjAud;
+        _audSrc.Play();
     }
 
     public void ChangeMonsterSound()
@@ -50,5 +62,15 @@ public class PNJSoundController : MonoBehaviour {
     {
         _pnjAud = _pnjAudList[index];
         _currentAudIndex = index;
+    }
+
+    public void PlayNightSound()
+    {
+        if (_pnj.IsBad == true)
+        {
+            _audSrc.clip = _pnjAudListNight[Random.Range(0, _pnjAudListNight.Length - 1)];
+            _timerAudNight = _audSrc.clip.length;
+            _timerAudNightOn = true;
+        }
     }
 }
