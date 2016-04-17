@@ -1044,9 +1044,18 @@ Prefab:
       propertyPath: _audListDay.Array.data[15]
       value: 
       objectReference: {fileID: 8300000, guid: 70cf88cf980fe4146a9708cd0f739a8d, type: 3}
+    - target: {fileID: 11438318, guid: 31b7c4cc41bcb0842a2780899930f451, type: 2}
+      propertyPath: Text
+      value: 
+      objectReference: {fileID: 1794638925}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 31b7c4cc41bcb0842a2780899930f451, type: 2}
   m_IsPrefabParent: 0
+--- !u!102 &1794638925 stripped
+TextMesh:
+  m_PrefabParentObject: {fileID: 10290004, guid: 31b7c4cc41bcb0842a2780899930f451,
+    type: 2}
+  m_PrefabInternal: {fileID: 1709164469}
 --- !u!4 &2081911190 stripped
 Transform:
   m_PrefabParentObject: {fileID: 413136, guid: c6311052d9efa31498fd1561e2be5f48, type: 2}

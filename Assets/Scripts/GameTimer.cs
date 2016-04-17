@@ -34,6 +34,12 @@ public class GameTimer : MonoBehaviour {
     [SerializeField]
     private AudioClip[] _audListDay;
 
+    [SerializeField]
+    private LaserPointer _laserLeft;
+
+    [SerializeField]
+    private LaserPointer _laserRight;
+
     private int _currentAfternoonTrack = 0;
 
     private float _timerDay;
@@ -46,8 +52,6 @@ public class GameTimer : MonoBehaviour {
 
     public bool goToNext = false;
 
-	public LaserPointer[] _laserPointers; 
-
     private PNJsController _pnjCtrl;
 
 	private int _nbOfCycles = 0;
@@ -58,22 +62,24 @@ public class GameTimer : MonoBehaviour {
     private bool _sound2PLaying = false;
 
 	public TextMesh helpText;
+	public TextMesh helpTextStep;
 
+    // Use this for initialization
+    void Start () {
     
-
-	// Use this for initialization
-	void Start () {
-        //_timerDay = _dayTime;
         _timerDay = (_audDay.clip.length * ((100 / _audDay.pitch)/100));
         _audDay.Play();
         _timerNight = (_audNight.clip.length * ((100 / _audNight.pitch) / 100));
-        //_timerNight = _nightTime;
+
         _timerMorning = (_audMorning.clip.length * ((100 / _audMorning.pitch) / 100));
         _timerMorning = _morningTime;
         _pnjCtrl = this.GetComponent<PNJsController>();
-		_laserPointers = this.GetComponentsInChildren<LaserPointer>();
-        Debug.Log(_laserPointers.Length);
-	}
+
+        _laserLeft.enabled = false;
+        _laserRight.enabled = false;
+
+        helpTextStep.text = "DAY";
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -87,6 +93,7 @@ public class GameTimer : MonoBehaviour {
             {
                 DayToNight();
             }
+
 			// if first cycle
 			if (_nbOfCycles == 0)
             {
@@ -115,7 +122,7 @@ public class GameTimer : MonoBehaviour {
                 NightToMorning();
             }
 			// if first cycle
-			if (_nbOfCycles==0)
+			if (_nbOfCycles == 0)
             {
                 helpText.text = "Be careful, the boss can make noise during the night.";
 			}
@@ -146,6 +153,8 @@ public class GameTimer : MonoBehaviour {
 
     void NightToMorning()
     {
+        helpTextStep.text = "MORNING";
+
         _timerNightOn = false;
         _timerNight = _nightTime;
         _timerMorningOn = true;
@@ -154,15 +163,17 @@ public class GameTimer : MonoBehaviour {
         _sound2PLaying = false;
         _nightSphere.SetActive(false);
         _audMorning.Play();
-		foreach(LaserPointer laser in _laserPointers)
-		{
-			laser.enabled = true;
-		}
+
         _pnjCtrl.goodKill = false;
+
+        _laserLeft.enabled = true;
+        _laserRight.enabled = true;
     }
 
     void DayToNight()
     {
+        
+        helpTextStep.text = "NIGHT";
         _timerDayOn = false;
         _timerDay = _dayTime;
         _timerNightOn = true;
@@ -173,6 +184,8 @@ public class GameTimer : MonoBehaviour {
 
     void MorningToDay()
     {
+        
+        helpTextStep.text = "DAY";
         if (goToNext)
         {
             _audMorning.Stop();
@@ -200,11 +213,10 @@ public class GameTimer : MonoBehaviour {
 
         _timerDay = (_audDay.clip.length * ((100 / _audDay.pitch) / 100));
         _audDay.Play();
-		foreach (LaserPointer laser in _laserPointers)
-		{
-			laser.enabled = false;
-		}
         _nbOfCycles++;
         Object.Destroy(helpText);
-    }
+
+        _laserLeft.enabled = false;
+        _laserRight.enabled = false;
+	}
 }
