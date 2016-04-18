@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 
 public struct LaserPointerEventArgs
 {
@@ -71,17 +72,18 @@ public class LaserPointer : MonoBehaviour
 				Object.Destroy(collider);
 			}
 		}
-		//Material newMaterial = new Material(Shader.Find("Unlit/Color"));
-		//newMaterial.SetColor("_Color", color);
+
         pointer.GetComponent<MeshRenderer>().material = material;
         pointer.GetComponent<MeshRenderer>().receiveShadows = false;
 
         _audSrcLaser = this.GetComponent<AudioSource>();
         _laserSoundInitial = _laserSoundRefresh;
 
-        _pnjCtrl = GameObject.Find("Main Camera (origin)").GetComponent<PNJsController>();
-        _gameTimer = this.transform.parent.GetComponent<GameTimer>();
-
+        if (SceneManager.GetActiveScene().name == "Game")
+        {
+            _pnjCtrl = GameObject.Find("Main Camera (origin)").GetComponent<PNJsController>();
+            _gameTimer = this.transform.parent.GetComponent<GameTimer>();
+        }
     }
 
 	public virtual void OnPointerIn(LaserPointerEventArgs e)
@@ -162,8 +164,6 @@ public class LaserPointer : MonoBehaviour
         if (_gameTimer.step == GameTimer.STEP.DAY || _gameTimer.step == GameTimer.STEP.NIGHT)
             return;
         
-        
-
         if (axis.x >= 1)
         {
             PlayLaserSound();
@@ -187,12 +187,9 @@ public class LaserPointer : MonoBehaviour
                     Object.DestroyImmediate(hit.collider.gameObject);
                     _cheers.BadCheers();
                 }
-
                 _gameTimer.goToNext = true;
             }
         }
-
-        
 	}
 
     void PlayLaserSound()
