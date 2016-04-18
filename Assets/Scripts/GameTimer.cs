@@ -222,6 +222,8 @@ public class GameTimer : MonoBehaviour {
 
         if (!_pnjCtrl.goodKill)
             _pnjCtrl.MovePNJsCloser();
+        else
+            _pnjCtrl.MakeHappyAnimation();
 
         if (_currentAfternoonTrack < 15)
         {

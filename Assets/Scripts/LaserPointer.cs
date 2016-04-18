@@ -177,7 +177,7 @@ public class LaserPointer : MonoBehaviour
                     Object.DestroyImmediate(hit.collider.gameObject);
                     _cheers.GoodCheers();
                     _pnjCtrl.goodKill = true;
-                    _pnjCtrl.MakeHappyAnimation();
+                    //_pnjCtrl.MakeHappyAnimation();
                 }
                 else
                 {
