@@ -35,12 +35,6 @@ public class GameTimer : MonoBehaviour {
     private AudioClip[] _audListDay;
 
     [SerializeField]
-    private LaserPointer _laserLeft;
-
-    [SerializeField]
-    private LaserPointer _laserRight;
-
-    [SerializeField]
     private ChangeIcon _iconLeft;
 
     [SerializeField]

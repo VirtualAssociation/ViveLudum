@@ -78,8 +78,9 @@ public class PNJsController : MonoBehaviour {
             GameObject prefab = pnjPrefabs[Random.Range(0, pnjPrefabs.Length)];
             float angle = Random.Range(0, 360);
             float radius = popRadius + Random.Range(-popRadiusRandom, popRadiusRandom);
-            Vector3 pos = this.transform.position + new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * radius;
+            Vector3 pos = this.transform.position + new Vector3(Mathf.Cos(angle), 0.05f, Mathf.Sin(angle)) * radius;
             Instantiate(prefab, pos, Quaternion.identity);
+            prefab.transform.parent = GameObject.Find("pnjs").transform;
         }
     }
 

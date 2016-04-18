@@ -32,7 +32,6 @@ public class ShapeShift : MonoBehaviour {
         int otherMonsterIndex = 0;
         while (!indexOK)
         {
-            Random.seed = (int)Time.time;
             int index = Random.Range(1, 6);
             if (currentMonster.name != "Monster_" + otherMonsterIndex)
             {

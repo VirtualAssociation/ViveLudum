@@ -17,6 +17,6 @@ public class PlayAreaController : MonoBehaviour
 		if (collision.collider.tag != "DestructibleChild"){ return; }
 		_timer.Stop();
 		NightSphere.SetActive(true);
-		Text.text = "YOU LOSE. Score: " + _timer.Cycles;
+		Text.text = "YOU LOSE. Score: " + _timer.Cycles + System.Environment.NewLine + "(Menu Button = Reset)";
 	}
 }
