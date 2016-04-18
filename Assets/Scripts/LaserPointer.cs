@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public struct LaserPointerEventArgs
 {
@@ -149,7 +150,7 @@ public class LaserPointer : MonoBehaviour
         if (bHit && hit.collider.name == "Monster_Start" && axis.x >= 1)
         {
             PlayLaserSound();
-            hit.collider.GetComponent<GameStarter>().StartGame();
+            SceneManager.LoadScene("Game");
             return;
         }
 
