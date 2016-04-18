@@ -21,7 +21,7 @@ public class ShapeShift : MonoBehaviour {
 
     public void ChangeBodyForm(GameObject pnj)
     {
-        Random.seed = (int)Time.time;
+        Random.seed = System.DateTime.Now.Millisecond;
 
         GameObject currentMonster = pnj.transform.GetChild(0).gameObject;
 

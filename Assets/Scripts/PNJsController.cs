@@ -19,7 +19,7 @@ public class PNJsController : MonoBehaviour {
 
     public void ShapeShift(int cycleNum)
     {
-        Random.seed = (int)Time.time;
+        Random.seed = System.DateTime.Now.Millisecond;
 
         // Reset All PNJs
         foreach(GameObject pnj in Pnjs)
@@ -72,7 +72,7 @@ public class PNJsController : MonoBehaviour {
 
     public void GenerateNewPNJs()
     {
-        Random.seed = (int)Time.time;
+        Random.seed = System.DateTime.Now.Millisecond;
         for (int i = 0; i < newPNJCount; ++i)
         {
             GameObject prefab = pnjPrefabs[Random.Range(0, pnjPrefabs.Length)];
@@ -100,18 +100,24 @@ public class PNJsController : MonoBehaviour {
     {
         foreach(GameObject pnj in Pnjs)
         {
-            GameObject monster = pnj.transform.GetChild(0).gameObject;
-            if (monster == null)
-            {
-                continue;
-            }
-            Animation anim = monster.GetComponent<Animation>();
-            if (anim == null)
-            {
-                continue;
-            }
-            anim.Play();
+            try {
+                GameObject monster = pnj.transform.GetChild(0).gameObject;
+                if (monster == null)
+                {
+                    continue;
+                }
 
+                Animation anim = monster.GetComponent<Animation>();
+                if (anim == null)
+                {
+                    continue;
+                }
+                anim.Play();
+            }
+            catch (UnityException e)
+            {
+                Debug.Log("Exception avoid: " + e);
+            }
         }
     }
 

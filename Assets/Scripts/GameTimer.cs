@@ -78,8 +78,8 @@ public class GameTimer : MonoBehaviour {
         NIGHT,
         MORNING
     };
-
-    public STEP step;
+    
+    public STEP step { get; private set; }
 
     // Use this for initialization
     void Start () {
@@ -186,7 +186,7 @@ public class GameTimer : MonoBehaviour {
 
     void DayToNight()
     {
-
+        goToNext = false;
         _iconLeft.ChangePhase();
         _iconRight.ChangePhase();
         
@@ -200,7 +200,7 @@ public class GameTimer : MonoBehaviour {
 
     void MorningToDay()
     {
-        goToNext = false;
+        //goToNext = false;
         _iconLeft.ChangePhase();
         _iconRight.ChangePhase();
         
