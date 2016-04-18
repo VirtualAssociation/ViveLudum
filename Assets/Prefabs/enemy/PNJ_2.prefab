@@ -17,6 +17,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &115958
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 449434}
+  - 111: {fileID: 11106928}
+  m_Layer: 0
+  m_Name: SubMonster_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &131622
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,7 +110,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 131622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.433, y: 0.011, z: 0}
+  m_LocalPosition: {x: 0.091, y: 0.011, z: -0.569}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 442196}
@@ -110,9 +126,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.022, y: 0.022, z: 0.022}
   m_Children:
-  - {fileID: 484304}
-  - {fileID: 489552}
-  - {fileID: 446680}
+  - {fileID: 449434}
   m_Father: {fileID: 415736}
   m_RootOrder: 0
 --- !u!4 &446680
@@ -122,11 +136,26 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 157544}
   m_LocalRotation: {x: 0.006072276, y: -0.08096028, z: 0.074546166, w: 0.99390715}
-  m_LocalPosition: {x: 0.57287514, y: 1.99, z: 0.010077246}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.12018062, y: 0.0034376155, z: -0.021767378}
+  m_LocalScale: {x: 0.022000002, y: 0.022, z: 0.022000002}
   m_Children: []
-  m_Father: {fileID: 442196}
+  m_Father: {fileID: 449434}
   m_RootOrder: 2
+--- !u!4 &449434
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 115958}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.8898807, y: 1.8337446, z: 0.9995021}
+  m_LocalScale: {x: 45.454544, y: 45.454544, z: 45.454544}
+  m_Children:
+  - {fileID: 484304}
+  - {fileID: 489552}
+  - {fileID: 446680}
+  m_Father: {fileID: 442196}
+  m_RootOrder: 0
 --- !u!4 &484304
 Transform:
   m_ObjectHideFlags: 1
@@ -134,10 +163,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 181734}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5728749, y: 1.99, z: -0.010078284}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.09497413, y: 0.0034376155, z: -0.022210836}
+  m_LocalScale: {x: 0.022000002, y: 0.022000002, z: 0.022000002}
   m_Children: []
-  m_Father: {fileID: 442196}
+  m_Father: {fileID: 449434}
   m_RootOrder: 0
 --- !u!4 &489552
 Transform:
@@ -146,10 +175,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114528}
   m_LocalRotation: {x: 0.006072276, y: -0.08096028, z: 0.074546166, w: 0.99390715}
-  m_LocalPosition: {x: 0.22956449, y: 1.99, z: 0.010954687}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.1126278, y: 0.0034376155, z: -0.021748064}
+  m_LocalScale: {x: 0.022000002, y: 0.022, z: 0.022000002}
   m_Children: []
-  m_Father: {fileID: 442196}
+  m_Father: {fileID: 449434}
   m_RootOrder: 1
 --- !u!23 &2303462
 MeshRenderer:
@@ -351,6 +380,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!111 &11106928
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 115958}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: ac77c38ed9df8c54292e414c1aa12f40, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: ac77c38ed9df8c54292e414c1aa12f40, type: 2}
+  - {fileID: 7400000, guid: c8cdefedfeebc42419c28cc1e63686b1, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!111 &11172176
 Animation:
   m_ObjectHideFlags: 1
@@ -362,6 +407,7 @@ Animation:
   m_Animation: {fileID: 7400000, guid: ac77c38ed9df8c54292e414c1aa12f40, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: ac77c38ed9df8c54292e414c1aa12f40, type: 2}
+  - {fileID: 7400000, guid: c8cdefedfeebc42419c28cc1e63686b1, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0

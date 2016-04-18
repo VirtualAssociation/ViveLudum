@@ -19,12 +19,14 @@ public class PNJsController : MonoBehaviour {
 
     public void ShapeShift(int cycleNum)
     {
+        Random.seed = (int)Time.time;
+
         // Reset All PNJs
         foreach(GameObject pnj in Pnjs)
         {
             pnj.GetComponent<PNJ>().Reset();
         }
-
+        
         // Get a random PNJ
         GameObject randomPNJ = null;
         while (randomPNJ == null)
@@ -101,16 +103,34 @@ public class PNJsController : MonoBehaviour {
             GameObject monster = pnj.transform.GetChild(0).gameObject;
             if (monster == null)
             {
-                Debug.Log(pnj.name + " - monster not found");
                 continue;
             }
             Animation anim = monster.GetComponent<Animation>();
             if (anim == null)
             {
-                Debug.Log(monster.name + " - anim not found");
                 continue;
             }
-            anim.Play();// ("play", true);
+            anim.Play();
+
+        }
+    }
+
+    public void MakeAngryAnimation()
+    {
+        foreach (GameObject pnj in Pnjs)
+        {
+            GameObject submonster = pnj.transform.GetChild(0).GetChild(0).gameObject;
+            if (submonster == null)
+            {
+                continue;
+            }
+            Animation anim = submonster.GetComponent<Animation>();
+            if (anim == null)
+            {
+                continue;
+            }
+            anim.GetClip("monster_loose");
+            anim.Play();
 
         }
     }

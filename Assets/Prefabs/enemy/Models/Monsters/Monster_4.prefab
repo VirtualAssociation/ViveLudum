@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!1 &119892
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -12,6 +12,21 @@ GameObject:
   - 23: {fileID: 2346770}
   m_Layer: 0
   m_Name: Eye
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &144364
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 472688}
+  m_Layer: 0
+  m_Name: SubMonster_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +42,7 @@ GameObject:
   - 4: {fileID: 440210}
   - 54: {fileID: 5409592}
   - 65: {fileID: 6501988}
-  - 95: {fileID: 9582346}
+  - 111: {fileID: 11132588}
   m_Layer: 0
   m_Name: Monster_4
   m_TagString: DestructibleChild
@@ -37,7 +52,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &154204
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -54,7 +69,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &188320
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -76,10 +91,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188320}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7241887, y: 2, z: 0.046011057}
+  m_LocalPosition: {x: -0.72418827, y: 2, z: 0.046012074}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 440210}
+  m_Father: {fileID: 472688}
   m_RootOrder: 0
 --- !u!4 &440210
 Transform:
@@ -91,9 +106,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.022, y: 0.022, z: 0.022}
   m_Children:
-  - {fileID: 415462}
-  - {fileID: 463152}
-  - {fileID: 488092}
+  - {fileID: 472688}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &463152
@@ -102,23 +115,38 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 119892}
-  m_LocalRotation: {x: 0, y: -0.05197674, z: -0, w: 0.9986483}
-  m_LocalPosition: {x: 0.1914214, y: 2, z: -0.012561048}
+  m_LocalRotation: {x: 0, y: -0.05197674, z: 0, w: 0.9986483}
+  m_LocalPosition: {x: 0.19142167, y: 2, z: -0.012563033}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 440210}
+  m_Father: {fileID: 472688}
   m_RootOrder: 1
+--- !u!4 &472688
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 144364}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 415462}
+  - {fileID: 463152}
+  - {fileID: 488092}
+  m_Father: {fileID: 440210}
+  m_RootOrder: 0
 --- !u!4 &488092
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 154204}
-  m_LocalRotation: {x: 0, y: -0.05197674, z: -0, w: 0.9986483}
-  m_LocalPosition: {x: 0.53276724, y: 2, z: -0.033450007}
+  m_LocalRotation: {x: 0, y: -0.05197674, z: 0, w: 0.9986483}
+  m_LocalPosition: {x: 0.53276664, y: 2, z: -0.03345175}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 440210}
+  m_Father: {fileID: 472688}
   m_RootOrder: 2
 --- !u!23 &2333112
 MeshRenderer:
@@ -246,23 +274,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.2, y: 4.1, z: 2.2}
   m_Center: {x: -0.8, y: 2.1, z: 0.05}
---- !u!95 &9582346
-Animator:
-  serializedVersion: 3
+--- !u!111 &11132588
+Animation:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147366}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7cc6955414b322848a104f91da085cec, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 3252cd569335c34478b6105faaf3af19, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 3252cd569335c34478b6105faaf3af19, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
