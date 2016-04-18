@@ -15,6 +15,7 @@ public delegate void LaserPointerEventHandler(object sender, LaserPointerEventAr
 public class LaserPointer : MonoBehaviour
 {
 	public Color color;
+    public Material material;
     public float thickness = 0.002f;
 	public GameObject holder;
 	public GameObject pointer;
@@ -70,9 +71,10 @@ public class LaserPointer : MonoBehaviour
 				Object.Destroy(collider);
 			}
 		}
-		Material newMaterial = new Material(Shader.Find("Unlit/Color"));
-		newMaterial.SetColor("_Color", color);
-        pointer.GetComponent<MeshRenderer>().material = newMaterial;
+		//Material newMaterial = new Material(Shader.Find("Unlit/Color"));
+		//newMaterial.SetColor("_Color", color);
+        pointer.GetComponent<MeshRenderer>().material = material;
+        pointer.GetComponent<MeshRenderer>().receiveShadows = false;
 
         _audSrcLaser = this.GetComponent<AudioSource>();
         _laserSoundInitial = _laserSoundRefresh;
