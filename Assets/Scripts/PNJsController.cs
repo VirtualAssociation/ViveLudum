@@ -93,4 +93,25 @@ public class PNJsController : MonoBehaviour {
             }
         }
     }
+
+    public void MakeHappyAnimation()
+    {
+        foreach(GameObject pnj in Pnjs)
+        {
+            GameObject monster = pnj.transform.GetChild(0).gameObject;
+            if (monster == null)
+            {
+                Debug.Log(pnj.name + " - monster not found");
+                continue;
+            }
+            Animation anim = monster.GetComponent<Animation>();
+            if (anim == null)
+            {
+                Debug.Log(monster.name + " - anim not found");
+                continue;
+            }
+            anim.Play();// ("play", true);
+
+        }
+    }
 }

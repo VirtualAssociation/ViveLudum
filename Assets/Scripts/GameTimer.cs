@@ -98,17 +98,6 @@ public class GameTimer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (happyAnimationStart)
-        {
-            if (Time.time - animationStartTime <= 2.0)
-            {
-                foreach (GameObject pnj in _pnjCtrl.Pnjs)
-                {
-                    pnj.transform.position += new Vector3(0.0f, 0.005f * Mathf.Cos(3.14f * 4f * (Time.time - animationStartTime)), 0.0f);
-                }
-            }
-        }
-
         _pnjCtrl.ReorientPNJs();
 
         if (_timerDayOn)
@@ -245,4 +234,5 @@ public class GameTimer : MonoBehaviour {
         _nbOfCycles++;
         Object.Destroy(helpText);
 	}
+
 }

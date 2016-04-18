@@ -174,16 +174,17 @@ public class LaserPointer : MonoBehaviour
                 SteamVR_Controller.Input((int)_trackedObj.index).TriggerHapticPulse(1500);
                 if (go.GetComponentInParent<PNJ>().IsBad)
                 {
+                    Object.DestroyImmediate(hit.collider.gameObject);
                     _cheers.GoodCheers();
                     _pnjCtrl.goodKill = true;
-                    _gameTimer.happyAnimationStart = true;
-                    _gameTimer.animationStartTime = Time.time;
+                    _pnjCtrl.MakeHappyAnimation();
                 }
                 else
                 {
+                    Object.DestroyImmediate(hit.collider.gameObject);
                     _cheers.BadCheers();
                 }
-                Object.DestroyImmediate(hit.collider.gameObject);
+
                 _gameTimer.goToNext = true;
             }
         }

@@ -44,6 +44,7 @@ GameObject:
   - 4: {fileID: 438926}
   - 54: {fileID: 5456166}
   - 65: {fileID: 6574378}
+  - 95: {fileID: 9574624}
   m_Layer: 0
   m_Name: Monster_1
   m_TagString: DestructibleChild
@@ -245,6 +246,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 3.7, z: 3}
   m_Center: {x: -0.5, y: 1.8, z: 0}
+--- !u!95 &9574624
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155356}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7cc6955414b322848a104f91da085cec, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
